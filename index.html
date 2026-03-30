@@ -1,0 +1,3224 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UFCD 6578 – Cuidados na Saúde Materna | Quiz de Estudo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #e8547a;
+    --rose-light: #f9d0db;
+    --rose-dark: #c03060;
+    --teal: #2a9d8f;
+    --teal-light: #c8ede9;
+    --gold: #e9c46a;
+    --navy: #1a1a2e;
+    --cream: #fdf6f0;
+    --white: #ffffff;
+    --gray: #6b7280;
+    --gray-light: #f3f4f6;
+    --correct: #16a34a;
+    --correct-bg: #dcfce7;
+    --wrong: #dc2626;
+    --wrong-bg: #fee2e2;
+    --shadow: 0 4px 24px rgba(0,0,0,0.10);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2a1a3e 40%, #c03060 100%);
+    color: white;
+    padding: 48px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 6px 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  header h1 span { color: var(--gold); }
+  header p.subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto 28px;
+  }
+  .header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hstat {
+    text-align: center;
+  }
+  .hstat-num {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--gold);
+    display: block;
+  }
+  .hstat-label {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* PROGRESS BAR */
+  .progress-container {
+    background: white;
+    padding: 20px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .progress-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--rose);
+    white-space: nowrap;
+  }
+  .progress-bar-wrap {
+    flex: 1;
+    min-width: 150px;
+    background: var(--gray-light);
+    border-radius: 50px;
+    height: 10px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--rose), var(--rose-dark));
+    border-radius: 50px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .progress-score {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+  .progress-score span { color: var(--rose); }
+
+  /* MAIN LAYOUT */
+  main { max-width: 860px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* SECTION HEADERS */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 48px 0 28px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid var(--rose-light);
+  }
+
+
+
+
+  .section-icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .section-header p {
+    font-size: 0.82rem;
+    color: var(--gray);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  /* QUESTION CARDS */
+  .question-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 28px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .question-card.answered-correct { border-color: var(--correct); }
+  .question-card.answered-wrong { border-color: var(--wrong); }
+
+  .question-header {
+    padding: 20px 24px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .q-number {
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    color: white;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .q-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--rose-light);
+    color: var(--rose-dark);
+    border-radius: 50px;
+    padding: 2px 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--navy);
+  }
+  .question-body { padding: 16px 24px 24px; }
+
+  /* IMAGE QUESTIONS */
+  .q-image-wrap {
+    margin: 14px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--gray-light);
+    background: var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    position: relative;
+  }
+  .q-image-wrap img {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    display: block;
+  }
+  .q-image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    text-align: center;
+    color: var(--gray);
+  }
+  .q-image-placeholder .img-icon { font-size: 3rem; margin-bottom: 8px; }
+  .q-image-placeholder p { font-size: 0.85rem; font-weight: 600; }
+
+  /* TRUE/FALSE */
+  .tf-options {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .tf-btn {
+    flex: 1;
+    padding: 14px;
+    border: 2px solid var(--gray-light);
+    border-radius: 12px;
+    background: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .tf-btn:hover:not(:disabled) {
+    border-color: var(--rose);
+    background: var(--rose-light);
+    transform: translateY(-2px);
+  }
+  .tf-btn.selected-correct {
+    background: var(--correct-bg);
+    border-color: var(--correct);
+    color: var(--correct);
+  }
+  .tf-btn.selected-wrong {
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+    color: var(--wrong);
+  }
+  .tf-btn.show-correct {
+    background: var(--correct-bg);
+    border-color: var(--correct);
+    color: var(--correct);
+  }
+  .tf-btn:disabled { cursor: default; }
+
+  /* MULTIPLE CHOICE */
+  .mc-options { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .mc-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 2px solid var(--gray-light);
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    width: 100%;
+  }
+  .mc-option:hover:not(:disabled) {
+    border-color: var(--rose);
+    background: var(--rose-light);
+    transform: translateX(4px);
+  }
+  .mc-option .opt-letter {
+    width: 28px; height: 28px;
+    background: var(--gray-light);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .mc-option:hover:not(:disabled) .opt-letter {
+    background: var(--rose);
+    color: white;
+  }
+  .mc-option.selected-correct {
+    background: var(--correct-bg);
+    border-color: var(--correct);
+    color: var(--correct);
+  }
+  .mc-option.selected-correct .opt-letter { background: var(--correct); color: white; }
+  .mc-option.selected-wrong {
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+    color: var(--wrong);
+  }
+  .mc-option.selected-wrong .opt-letter { background: var(--wrong); color: white; }
+  .mc-option.show-correct {
+    background: var(--correct-bg);
+    border-color: var(--correct);
+    color: var(--correct);
+  }
+  .mc-option.show-correct .opt-letter { background: var(--correct); color: white; }
+  .mc-option:disabled { cursor: default; }
+
+  /* CHECK BUTTON */
+  .check-btn {
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .check-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(192,48,96,0.35);
+  }
+  .check-btn:disabled { opacity: 0.5; cursor: default; transform: none; }
+
+  /* FEEDBACK */
+  .feedback-box {
+    margin-top: 16px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  .feedback-box.correct { background: var(--correct-bg); border-left: 4px solid var(--correct); }
+  .feedback-box.wrong { background: var(--wrong-bg); border-left: 4px solid var(--wrong); }
+  .feedback-title {
+    font-size: 0.9rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .feedback-box.correct .feedback-title { color: var(--correct); }
+  .feedback-box.wrong .feedback-title { color: var(--wrong); }
+  .feedback-text { font-size: 0.88rem; font-weight: 600; line-height: 1.55; color: var(--navy); }
+
+  /* DEVELOPMENT QUESTIONS */
+  .dev-textarea {
+    width: 100%;
+    min-height: 120px;
+    border: 2px solid var(--gray-light);
+    border-radius: 12px;
+    padding: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.92rem;
+    color: var(--navy);
+    resize: vertical;
+    transition: border-color 0.2s;
+    margin-top: 14px;
+  }
+  .dev-textarea:focus {
+    outline: none;
+    border-color: var(--rose);
+  }
+  .dev-hint {
+    font-size: 0.78rem;
+    color: var(--gray);
+    margin-top: 6px;
+    font-weight: 600;
+  }
+  .model-answer {
+    margin-top: 14px;
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border: 2px solid #7dd3fc;
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  .model-answer-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #0369a1;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .model-answer-text {
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--navy);
+  }
+  .show-answer-btn {
+    background: #0ea5e9;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+  }
+  .show-answer-btn:hover { background: #0369a1; transform: translateY(-2px); }
+
+  /* IMAGE LABEL QUESTION */
+  .label-input {
+    width: 100%;
+    border: 2px solid var(--gray-light);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.92rem;
+    color: var(--navy);
+    margin-top: 10px;
+    transition: border-color 0.2s;
+  }
+  .label-input:focus { outline: none; border-color: var(--rose); }
+  .label-prompt { font-size: 0.88rem; font-weight: 700; color: var(--gray); margin-top: 12px; }
+
+  /* FINAL RESULTS */
+  #results-section {
+    display: none;
+    background: white;
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+    padding: 48px 32px;
+    margin-top: 48px;
+    text-align: center;
+    border: 3px solid var(--rose-light);
+  }
+  .results-trophy { font-size: 4rem; margin-bottom: 16px; }
+  .results-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .results-grade {
+    font-size: 5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin: 16px 0;
+  }
+  .results-subtitle { font-size: 1.1rem; font-weight: 700; color: var(--gray); margin-bottom: 24px; }
+  .results-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 24px 0;
+  }
+  .rstat {
+    background: var(--gray-light);
+    border-radius: 16px;
+    padding: 20px 28px;
+    min-width: 120px;
+  }
+  .rstat-num { font-size: 2rem; font-weight: 900; color: var(--navy); display: block; }
+  .rstat-label { font-size: 0.78rem; color: var(--gray); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .rstat.correct .rstat-num { color: var(--correct); }
+  .rstat.wrong .rstat-num { color: var(--wrong); }
+  .result-message {
+    background: var(--rose-light);
+    border-radius: 14px;
+    padding: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--rose-dark);
+    margin: 20px 0;
+  }
+  .restart-btn {
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 36px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .restart-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(192,48,96,0.4); }
+
+  /* SUBMIT ALL BTN */
+  .submit-all-wrap {
+    text-align: center;
+    margin-top: 48px;
+  }
+  .submit-all-btn {
+    background: linear-gradient(135deg, var(--teal), #1a7a6e);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 20px 48px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 20px rgba(42,157,143,0.3);
+  }
+  .submit-all-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(42,157,143,0.45); }
+
+  /* BACK TO TOP */
+  #back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(192,48,96,0.4);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+  }
+  #back-to-top.visible { opacity: 1; pointer-events: all; }
+  #back-to-top:hover { transform: translateY(-4px); }
+
+  /* ANIMATIONS */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* TOAST */
+  #toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--navy);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 300;
+    white-space: nowrap;
+    max-width: 90vw;
+    text-align: center;
+  }
+  #toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* CLEAR PROGRESS BTN */
+  .clear-progress-btn {
+    background: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .clear-progress-btn:hover {
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+    color: var(--wrong);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .header-stats { gap: 20px; }
+    .hstat-num { font-size: 1.4rem; }
+    .section-header h2 { font-size: 1.2rem; }
+    .results-stats { gap: 12px; }
+    .rstat { padding: 14px 18px; min-width: 90px; }
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 36px 16px 44px; }
+    main { padding: 24px 12px 60px; }
+    .question-header { padding: 16px 16px 0; }
+    .question-body { padding: 12px 16px 20px; }
+    .tf-options { flex-direction: column; }
+    #back-to-top { bottom: 20px; right: 16px; }
+    .results-grade { font-size: 4rem; }
+    .progress-container { gap: 10px; padding: 14px 16px; }
+    .mc-option { font-size: 0.88rem; padding: 12px 12px; }
+    .submit-all-btn { padding: 16px 28px; font-size: 1rem; }
+  }
+
+  /* DIAGRAM / ANATOMY VISUAL */
+  .anatomy-diagram {
+    background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+    border: 2px dashed var(--rose-light);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 14px 0;
+    text-align: center;
+  }
+  .anatomy-diagram .anat-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--rose-dark);
+    margin-bottom: 12px;
+  }
+  .anatomy-svg { max-width: 100%; height: auto; }
+
+  .dna-visual {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 2px dashed #86efac;
+    border-radius: 14px;
+    padding: 24px;
+    margin: 14px 0;
+    text-align: center;
+  }
+  .cycle-visual {
+    background: linear-gradient(135deg, #fef9c3, #fef08a);
+    border: 2px dashed #fbbf24;
+    border-radius: 14px;
+    padding: 24px;
+    margin: 14px 0;
+    text-align: center;
+  }
+  .fetal-visual {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border: 2px dashed #7dd3fc;
+    border-radius: 14px;
+    padding: 24px;
+    margin: 14px 0;
+    text-align: center;
+  }
+	
+.num{
+  background:#2a9d8f;
+  color:white;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  flex-shrink:0;
+}
+
+.input-q49{
+  flex:1;
+  padding:10px 12px;
+  border:2px solid #2a9d8f;
+  border-radius:10px;
+  font-size:0.95rem;
+}
+	
+	
+	.step-box{
+  background:#f0fdfa;
+  border:2px solid #2a9d8f;
+  border-radius:12px;
+  padding:14px;
+  font-size:0.95rem;
+  font-weight:600;
+}
+	
+</style>
+</head>
+<body>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Voltar ao topo">⬆</button>
+
+<header id="top">
+  <div class="header-badge">📚 IEFP · Técnico Auxiliar de Saúde</div>
+  <h1>UFCD 6578 <span>Cuidados na Saúde Materna</span></h1>
+  <p class="subtitle">Questionário interativo de preparação para o teste de avaliação. Testa os teus conhecimentos e prepara-te com confiança!</p>
+  <div class="header-stats">
+    <div class="hstat"><span class="hstat-num">70+</span><span class="hstat-label">Questões</span></div>
+    <div class="hstat"><span class="hstat-num">5</span><span class="hstat-label">Módulos</span></div>
+    <div class="hstat"><span class="hstat-num">100%</span><span class="hstat-label">Interativo</span></div>
+  </div>
+</header>
+
+<div id="toast"></div>
+
+<div class="progress-container">
+  <span class="progress-label">📊 Progresso</span>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+  <span class="progress-score" id="progressScore">0/<span id="totalQ">0</span> respondidas</span>
+  <span class="progress-score" style="margin-left:8px;">✅ <span id="correctCount">0</span> certas &nbsp; ❌ <span id="wrongCount">0</span> erradas</span>
+  <button class="clear-progress-btn" onclick="clearProgress()" title="Apagar progresso guardado e recomeçar">🗑️ Recomeçar</button>
+</div>
+
+<main>
+
+<!-- ===========================
+     MÓDULO 1: HEREDITARIEDADE
+     =========================== -->
+<div class="section-header">
+  <div class="section-icon">🧬</div>
+  <div>
+    <h2>Módulo 1 – Hereditariedade, Reprodução e Desenvolvimento Embrionário</h2>
+    <p>Verdadeiro/Falso · Escolha Múltipla · Desenvolvimento · Imagens</p>
+  </div>
+</div>
+
+<!-- Q1 TF -->
+<div class="question-card" id="q1">
+  <div class="question-header">
+    <div class="q-number">1</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A hereditariedade é o processo pelo qual as características são transmitidas de uma geração para a outra através dos genes, incluindo traços físicos e predisposições a certas condições de saúde.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q1','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q1','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q1-fb"></div>
+  </div>
+</div>
+
+<!-- Q2 TF -->
+<div class="question-card" id="q2">
+  <div class="question-header">
+    <div class="q-number">2</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">Na espécie humana, a reprodução sexuada resulta da fecundação de um óvulo (produzido pela fêmea) por um espermatozoide (produzido pelo macho), criando um novo ser semelhante aos progenitores.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q2','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q2','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q2-fb"></div>
+  </div>
+</div>
+
+<!-- Q3 TF -->
+<div class="question-card" id="q3">
+  <div class="question-header">
+    <div class="q-number">3</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">Os seres humanos possuem 23 cromossomas em cada célula, organizados em 46 pares.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q3','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q3','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q3-fb"></div>
+  </div>
+</div>
+
+<!-- Q4 TF -->
+<div class="question-card" id="q4">
+  <div class="question-header">
+    <div class="q-number">4</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A mitose é a divisão celular que gera gametas (óvulos e espermatozoides) com metade do número de cromossomas da célula-mãe.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q4','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q4','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q4-fb"></div>
+  </div>
+</div>
+
+<!-- Q5 MC -->
+<div class="question-card" id="q5">
+  <div class="question-header">
+    <div class="q-number">5</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Qual das seguintes afirmações melhor define o conceito de GENOMA?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q5','a')" data-opt="a"><span class="opt-letter">A</span>A molécula de DNA que forma a dupla hélice.</button>
+      <button class="mc-option" onclick="checkMC(this,'q5','b')" data-opt="b"><span class="opt-letter">B</span>O conjunto de todos os genes de um organismo.</button>
+      <button class="mc-option" onclick="checkMC(this,'q5','c')" data-opt="c"><span class="opt-letter">C</span>Cada segmento específico de DNA que codifica uma proteína.</button>
+      <button class="mc-option" onclick="checkMC(this,'q5','d')" data-opt="d"><span class="opt-letter">D</span>As estruturas organizadas de DNA no núcleo das células.</button>
+    </div>
+    <div class="feedback-box" id="q5-fb"></div>
+  </div>
+</div>
+
+<!-- Q6 MC -->
+<div class="question-card" id="q6">
+  <div class="question-header">
+    <div class="q-number">6</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">O sexo biológico do bebé é determinado por:</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q6','a')" data-opt="a"><span class="opt-letter">A</span>Os cromossomas sexuais da mãe (XX), sendo sempre a mãe a determinar o sexo.</button>
+      <button class="mc-option" onclick="checkMC(this,'q6','b')" data-opt="b"><span class="opt-letter">B</span>O cromossoma sexual do espermatozoide (X ou Y) que fecunda o óvulo.</button>
+      <button class="mc-option" onclick="checkMC(this,'q6','c')" data-opt="c"><span class="opt-letter">C</span>A temperatura corporal da mãe durante a gravidez.</button>
+      <button class="mc-option" onclick="checkMC(this,'q6','d')" data-opt="d"><span class="opt-letter">D</span>O número de cromossomas presentes no zigoto.</button>
+    </div>
+    <div class="feedback-box" id="q6-fb"></div>
+  </div>
+</div>
+
+<!-- Q7 LABELING - Female Reproductive System -->
+<div class="question-card" id="q7">
+  <div class="question-header">
+    <div class="q-number">7</div>
+    <div>
+      <div class="q-type-badge">🖼️ Legenda de Imagem</div>
+      <div class="question-text">
+        Observa o diagrama do <strong>aparelho reprodutor feminino</strong>. 
+        Escreve o nome correto de cada estrutura assinalada com os números.
+      </div>
+    </div>
+  </div>
+
+  <div class="question-body">
+    <div style="display:flex;flex-direction:column;gap:24px;">
+
+      <!-- IMAGEM EM CIMA, GRANDE -->
+      <div style="text-align:center;">
+        <img 
+          src="imagens/esquema-reprodutor-feminino-numerado.png" 
+          alt="Esquema do aparelho reprodutor feminino" 
+          style="width:100%;max-width:100%;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,0.15);image-rendering:crisp-edges;"
+        >
+      </div>
+
+      <!-- RESPOSTAS EM BAIXO, EM GRELHA 2 COLUNAS -->
+      <div>
+        <p style="font-size:0.85rem;font-weight:700;color:var(--gray);margin-bottom:12px;">📝 Escreve o nome correto de cada estrutura numerada:</p>
+        <div id="answers-q7" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px 20px;">
+          <!-- Campos 1 a 13 -->
+          <script>
+            for(let i=1;i<=13;i++){
+              document.write(`<label style="font-size:0.9rem;font-weight:700;color:var(--navy);display:block;">${i}. <input type="text" id="q7_${i}" class="label-input" placeholder="Resposta..." style="width:100%;margin-top:4px;"></label>`);
+            }
+          </script>
+        </div>
+
+        <!-- BOTÃO -->
+        <button onclick="corrigirQ7()" style="margin-top:18px;padding:12px 24px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--rose),var(--rose-dark));color:white;font-family:'Nunito',sans-serif;font-size:0.9rem;font-weight:800;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px;">
+          ✔ Verificar respostas
+        </button>
+
+        <!-- RESULTADO -->
+        <div id="resultado-q7" style="margin-top:12px;font-weight:bold;font-size:0.92rem;line-height:1.5;"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function corrigirQ7(){
+  const respostasCorretas = {
+    1: "cavidade uterina",
+    2: "trompas de falópio",
+    3: "ovário",
+    4: "colo do útero",
+    5: "pavilhão da trompa",
+    6: "vagina",
+    7: "clitóris",
+    8: "orifício urinário",
+    9: "grande lábio",
+    10: "pequeno lábio",
+    11: "orifício genital",
+    12: "vulva",
+    13: "ânus"
+  };
+
+  let certas = 0;
+  let erradas = [];
+
+  for(let i=1;i<=13;i++){
+    let input = document.getElementById("q7_"+i);
+    let respostaUser = input.value.toLowerCase().trim();
+    let correta = respostasCorretas[i];
+
+    // Normalizar para comparação (remover acentos e espaços extra)
+    let normalize = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+
+    if(normalize(respostaUser) === normalize(correta)){
+      input.style.border = "2px solid green";
+      input.style.background = "#dcfce7";
+      certas++;
+    } else {
+      input.style.border = "2px solid red";
+      input.style.background = "#fee2e2";
+      // Mostrar a resposta correta ao lado do campo
+      let label = input.closest("label");
+      // Remover hint anterior se existir
+      let oldHint = label.querySelector(".resposta-correta-hint");
+      if(oldHint) oldHint.remove();
+      let hint = document.createElement("span");
+      hint.className = "resposta-correta-hint";
+      hint.style.cssText = "display:block;font-size:0.82rem;color:#16a34a;font-weight:700;margin-top:3px;";
+      hint.innerHTML = `✅ Resposta correta: <em>${correta}</em>`;
+      label.appendChild(hint);
+      erradas.push(i);
+    }
+  }
+
+  let resultadoEl = document.getElementById("resultado-q7");
+  if(erradas.length === 0){
+    resultadoEl.innerHTML = `<span style="color:#16a34a;">🎉 Parabéns! Acertaste todas as 13 respostas!</span>`;
+  } else {
+    resultadoEl.innerHTML = `<span style="color:#1a1a2e;">Acertaste <strong style="color:#16a34a;">${certas}</strong> de 13 respostas. As respostas corretas para as que erraste aparecem a verde por baixo de cada campo.</span>`;
+  }
+}
+</script>
+
+
+<!-- Q8 TF -->
+<div class="question-card" id="q8">
+  <div class="question-header">
+    <div class="q-number">8</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">Os ovários libertam um ovócito II mais ou menos a cada 28 dias, num processo denominado ciclo ovulatório. Esse ovócito só termina a oogénese se ocorrer fecundação.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q8','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q8','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q8-fb"></div>
+  </div>
+</div>
+
+<!-- Q9 MC -->
+<div class="question-card" id="q9">
+  <div class="question-header">
+    <div class="q-number">9</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">O ciclo ovárico é composto por três fases. Qual é a sequência CORRETA?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q9','a')" data-opt="a"><span class="opt-letter">A</span>Fase Lútea → Fase Folicular → Fase Ovulatória</button>
+      <button class="mc-option" onclick="checkMC(this,'q9','b')" data-opt="b"><span class="opt-letter">B</span>Fase Folicular → Fase Ovulatória → Fase Lútea</button>
+      <button class="mc-option" onclick="checkMC(this,'q9','c')" data-opt="c"><span class="opt-letter">C</span>Fase Ovulatória → Fase Lútea → Fase Folicular</button>
+      <button class="mc-option" onclick="checkMC(this,'q9','d')" data-opt="d"><span class="opt-letter">D</span>Fase Folicular → Fase Lútea → Fase Ovulatória</button>
+    </div>
+    <div class="feedback-box" id="q9-fb"></div>
+  </div>
+</div>
+
+<!-- Q10 MC -->
+<div class="question-card" id="q10">
+  <div class="question-header">
+    <div class="q-number">10</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">A fecundação ocorre normalmente em que local do aparelho reprodutor feminino?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q10','a')" data-opt="a"><span class="opt-letter">A</span>No útero (endométrio).</button>
+      <button class="mc-option" onclick="checkMC(this,'q10','b')" data-opt="b"><span class="opt-letter">B</span>Na vagina, junto ao colo do útero.</button>
+      <button class="mc-option" onclick="checkMC(this,'q10','c')" data-opt="c"><span class="opt-letter">C</span>Nas trompas de Falópio.</button>
+      <button class="mc-option" onclick="checkMC(this,'q10','d')" data-opt="d"><span class="opt-letter">D</span>Nos ovários, após a ovulação.</button>
+    </div>
+    <div class="feedback-box" id="q10-fb"></div>
+  </div>
+</div>
+
+<!-- Q11 TF -->
+<div class="question-card" id="q11">
+  <div class="question-header">
+    <div class="q-number">11</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">Quando um espermatozoide penetra no ovócito, ocorre imediatamente um bloqueio que impede a entrada de outros espermatozoides, formando-se o ovo/zigoto após a junção dos núcleos.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q11','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q11','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q11-fb"></div>
+  </div>
+</div>
+
+<!-- Q12 MC - Fetal development -->
+<div class="question-card" id="q12">
+  <div class="question-header">
+    <div class="q-number">12</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">O desenvolvimento embrionário/fetal divide-se em três fases. Qual é a designação correta para o produto da fertilização na SEGUNDA fase (primeiro trimestre)?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q12','a')" data-opt="a"><span class="opt-letter">A</span>Zigoto ou ovo.</button>
+      <button class="mc-option" onclick="checkMC(this,'q12','b')" data-opt="b"><span class="opt-letter">B</span>Embrião.</button>
+      <button class="mc-option" onclick="checkMC(this,'q12','c')" data-opt="c"><span class="opt-letter">C</span>Feto.</button>
+      <button class="mc-option" onclick="checkMC(this,'q12','d')" data-opt="d"><span class="opt-letter">D</span>Blastocisto.</button>
+    </div>
+    <div class="feedback-box" id="q12-fb"></div>
+  </div>
+</div>
+
+<!-- Q13 IMAGE - Fetal development months -->
+<div class="question-card" id="q13">
+  <div class="question-header">
+    <div class="q-number">13</div>
+    <div>
+      <div class="q-type-badge">🖼️ Questão com Imagem</div>
+      <div class="question-text">Observa o diagrama do desenvolvimento fetal mês a mês e responde: Em que mês da gravidez o feto passa a ser designado "feto" (deixando de ser embrião), e quais as suas medidas aproximadas nesse momento?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="fetal-visual">
+      <div style="font-size:0.8rem;font-weight:800;color:#0369a1;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">📊 Tabela de Desenvolvimento Fetal</div>
+      <table style="width:100%;border-collapse:collapse;font-size:0.78rem;text-align:center;">
+        <tr style="background:#0ea5e9;color:white;">
+          <th style="padding:6px;border-radius:6px 0 0 0;">Mês</th>
+          <th style="padding:6px;">Peso aprox.</th>
+          <th style="padding:6px;">Comprimento aprox.</th>
+          <th style="padding:6px;border-radius:0 6px 0 0;">Marco principal</th>
+        </tr>
+        <tr style="background:white;"><td style="padding:5px;">1º</td><td>&lt; 1g</td><td>5 mm</td><td>Coração começa a bater</td></tr>
+        <tr style="background:#f0f9ff;"><td style="padding:5px;">2º</td><td>2-3g</td><td>3-4 cm</td><td>Desenvolvimento de estruturas como braços</td></tr>
+        <tr style="background:white;"><td style="padding:5px;">3º</td><td>30g</td><td>10 cm</td><td>Órgãos genitais diferenciados</td></tr>
+        <tr style="background:#f0f9ff;"><td style="padding:5px;">4º</td><td>150g</td><td>16 cm</td><td>Sexo visível na ecografia</td></tr>
+        <tr style="background:white;"><td style="padding:5px;">5º</td><td>250-300g</td><td>25 cm</td><td>Audível com estetoscópio</td></tr>
+        <tr style="background:#f0f9ff;"><td style="padding:5px;">6º</td><td>600g</td><td>32 cm</td><td>Vérnix caseosa na pele</td></tr>
+        <tr style="background:white;"><td style="padding:5px;">7º</td><td>1,2-1,4 kg</td><td>40 cm</td><td>Pode sobreviver c/ ajuda</td></tr>
+        <tr style="background:#f0f9ff;"><td style="padding:5px;">8º</td><td>2-2,5 kg</td><td>47 cm</td><td>Pulmões maduros</td></tr>
+        <tr style="background:white;"><td style="padding:5px;">9º</td><td>3-3,5 kg</td><td>~50 cm</td><td>Pronto para nascer</td></tr>
+      </table>
+    </div>
+    <div class="mc-options" style="margin-top:12px;">
+      <button class="mc-option" onclick="checkMC(this,'q13','a')" data-opt="a"><span class="opt-letter">A</span>No final do 1º mês, quando mede 5 mm e pesa menos de 1g.</button>
+      <button class="mc-option" onclick="checkMC(this,'q13','b')" data-opt="b"><span class="opt-letter">B</span>No final do 2º mês (8ª semana), quando mede 3 a 4 cm e pesa 2 a 3g.</button>
+      <button class="mc-option" onclick="checkMC(this,'q13','c')" data-opt="c"><span class="opt-letter">C</span>No final do 3º mês, quando mede 10 cm e pesa 30g.</button>
+      <button class="mc-option" onclick="checkMC(this,'q13','d')" data-opt="d"><span class="opt-letter">D</span>No início do 4º mês, quando os órgãos genitais ficam visíveis na ecografia.</button>
+    </div>
+    <div class="feedback-box" id="q13-fb"></div>
+  </div>
+</div>
+
+<!-- Q14 TF -->
+<div class="question-card" id="q14">
+  <div class="question-header">
+    <div class="q-number">14</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A vérnix caseosa é uma substância untuosa esbranquiçada que reveste a superfície cutânea do feto a partir do 6º mês, protegendo-o do contínuo contacto com o líquido amniótico.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q14','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q14','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q14-fb"></div>
+  </div>
+</div>
+
+<!-- Q15 MC - Placenta -->
+<div class="question-card" id="q15">
+  <div class="question-header">
+    <div class="q-number">15</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Durante a gestação formam-se estruturas fundamentais de suporte ao embrião. Qual é a função do SACO AMNIÓTICO (bolsa das águas)?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q15','a')" data-opt="a"><span class="opt-letter">A</span>Ligar o embrião à placenta e transportar nutrientes e produtos de excreção.</button>
+      <button class="mc-option" onclick="checkMC(this,'q15','b')" data-opt="b"><span class="opt-letter">B</span>Desenvolver-se no endométrio e ser responsável pela oxigenação e nutrição do feto.</button>
+      <button class="mc-option" onclick="checkMC(this,'q15','c')" data-opt="c"><span class="opt-letter">C</span>Conter o embrião em líquido amniótico, protegendo-o de choques e traumatismos.</button>
+      <button class="mc-option" onclick="checkMC(this,'q15','d')" data-opt="d"><span class="opt-letter">D</span>Produzir hormonas sexuais para manter a gravidez.</button>
+    </div>
+    <div class="feedback-box" id="q15-fb"></div>
+  </div>
+</div>
+
+<!-- Q16 DEVELOPMENT -->
+<div class="question-card" id="q16">
+  <div class="question-header">
+    <div class="q-number">16</div>
+    <div>
+      <div class="q-type-badge">📝 Desenvolvimento</div>
+      <div class="question-text">Descreve as principais características do desenvolvimento fetal no 7º mês de gravidez, incluindo o peso, comprimento e capacidade de sobrevivência do feto.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <textarea class="dev-textarea" placeholder="Escreve a tua resposta aqui..."></textarea>
+    <div class="dev-hint">💡 Dica: Pensa no sistema nervoso, movimentos, sentidos e viabilidade fetal.</div>
+    <button class="show-answer-btn" onclick="showModelAnswer('q16')">📖 Ver Resposta Modelo</button>
+    <div class="model-answer" id="q16-model">
+      <div class="model-answer-title">📖 Resposta Modelo</div>
+      <div class="model-answer-text">No 7º mês de gravidez, o feto mede cerca de 40 cm e pesa entre 1,2 a 1,4 kg. O sistema nervoso amadurece significativamente: o feto movimenta as mãos com suavidade e precisão, abre e fecha os olhos, e reage a estímulos externos como luz intensa ou sons (com aumento da frequência cardíaca). Embora os movimentos sejam ativos, move-se menos porque ocupa praticamente todo o espaço do útero. Costuma girar com a cabeça para baixo, preparando-se para nascer. A partir deste mês, caso nascesse prematuramente, teria elevadas probabilidades de sobreviver com ajuda técnica especializada. No entanto, os pulmões ainda não estão completamente maduros, a pele é ainda fina e o sistema termorregulador não funciona perfeitamente.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q17 TF -->
+<div class="question-card" id="q17">
+  <div class="question-header">
+    <div class="q-number">17</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">O aparelho genital masculino é constituído pelos testículos, canais deferentes, vesículas seminais, próstata, uretra e pénis.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q17','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q17','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q17-fb"></div>
+  </div>
+</div>
+
+<!-- Q18 MC - Semen -->
+<div class="question-card" id="q18">
+  <div class="question-header">
+    <div class="q-number">18</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">O sémen (esperma) é um fluido orgânico composto por vários elementos. Qual NÃO faz parte da constituição do sémen?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q18','a')" data-opt="a"><span class="opt-letter">A</span>Espermatozoides transportados pelos canais deferentes.</button>
+      <button class="mc-option" onclick="checkMC(this,'q18','b')" data-opt="b"><span class="opt-letter">B</span>Líquido seminal produzido pelas vesículas seminais.</button>
+      <button class="mc-option" onclick="checkMC(this,'q18','c')" data-opt="c"><span class="opt-letter">C</span>Líquido prostático produzido pela próstata.</button>
+      <button class="mc-option" onclick="checkMC(this,'q18','d')" data-opt="d"><span class="opt-letter">D</span>Líquido amniótico produzido pelo saco amniótico.</button>
+    </div>
+    <div class="feedback-box" id="q18-fb"></div>
+  </div>
+</div>
+
+<!-- ===========================
+     MÓDULO 2: GRAVIDEZ
+     =========================== -->
+<div class="section-header">
+  <div class="section-icon">🤰</div>
+  <div>
+    <h2>Módulo 2 – A Gravidez e a Vigilância da Saúde Materna</h2>
+    <p>Verdadeiro/Falso · Escolha Múltipla · Desenvolvimento · Imagens</p>
+  </div>
+</div>
+
+<!-- Q19 TF -->
+<div class="question-card" id="q19">
+  <div class="question-header">
+    <div class="q-number">19</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A gravidez é um estado de doença que necessita de tratamento médico intensivo desde o início.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q19','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q19','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q19-fb"></div>
+  </div>
+</div>
+
+<!-- Q20 MC - Sinais gravidez -->
+<div class="question-card" id="q20">
+  <div class="question-header">
+    <div class="q-number">20</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Quais dos seguintes são considerados SINAIS DE CERTEZA de gravidez?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q20','a')" data-opt="a"><span class="opt-letter">A</span>Náuseas, vómitos e polaquiúria.</button>
+      <button class="mc-option" onclick="checkMC(this,'q20','b')" data-opt="b"><span class="opt-letter">B</span>Amenorreia (interrupção da menstruação) e hipersensibilidade mamária.</button>
+      <button class="mc-option" onclick="checkMC(this,'q20','c')" data-opt="c"><span class="opt-letter">C</span>Batimentos cardíacos fetais, movimentos fetais e diagnóstico ecográfico e analítico (β-HCG).</button>
+      <button class="mc-option" onclick="checkMC(this,'q20','d')" data-opt="d"><span class="opt-letter">D</span>Sinal de Chadwick e aumento do tamanho do abdómen.</button>
+    </div>
+    <div class="feedback-box" id="q20-fb"></div>
+  </div>
+</div>
+
+<!-- Q21 MC - Sinais presunção -->
+<div class="question-card" id="q21">
+  <div class="question-header">
+    <div class="q-number">21</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">O "Sinal de Chadwick" é um sinal de probabilidade de gravidez. Em que consiste?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q21','a')" data-opt="a"><span class="opt-letter">A</span>Interrupção da menstruação (amenorreia).</button>
+      <button class="mc-option" onclick="checkMC(this,'q21','b')" data-opt="b"><span class="opt-letter">B</span>Tonalidade púrpura da vagina e colo do útero.</button>
+      <button class="mc-option" onclick="checkMC(this,'q21','c')" data-opt="c"><span class="opt-letter">C</span>Náuseas matinais e vómitos frequentes.</button>
+      <button class="mc-option" onclick="checkMC(this,'q21','d')" data-opt="d"><span class="opt-letter">D</span>Deteção de β-HCG na urina ou no sangue.</button>
+    </div>
+    <div class="feedback-box" id="q21-fb"></div>
+  </div>
+</div>
+
+<!-- Q22 TF -->
+<div class="question-card" id="q22">
+  <div class="question-header">
+    <div class="q-number">22</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A duração normal de uma gravidez é de aproximadamente 40 semanas, correspondendo ao período entre a conceção e o trabalho de parto.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q22','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q22','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q22-fb"></div>
+  </div>
+</div>
+
+<!-- Q23 IMAGE - Signs of pregnancy -->
+<div class="question-card" id="q23">
+  <div class="question-header">
+    <div class="q-number">23</div>
+    <div>
+      <div class="q-type-badge">🖼️ Questão com Imagem</div>
+      <div class="question-text">Observa os sinais de gravidez apresentados e escolhe a opção que os classifica corretamente nos grupos "Presunção", "Probabilidade" e "Certeza".</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="cycle-visual">
+      <div style="font-size:0.8rem;font-weight:800;color:#92400e;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">⚡ Sinais de Gravidez</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;font-size:0.8rem;">
+        <div style="background:white;border-radius:8px;padding:10px;text-align:center;"><div style="font-size:1.2rem;">🤢</div>Náuseas matinais</div>
+        <div style="background:white;border-radius:8px;padding:10px;text-align:center;"><div style="font-size:1.2rem;">💜</div>Sinal de Chadwick</div>
+        <div style="background:white;border-radius:8px;padding:10px;text-align:center;"><div style="font-size:1.2rem;">❤️</div>Batimentos cardíacos fetais</div>
+        <div style="background:white;border-radius:8px;padding:10px;text-align:center;"><div style="font-size:1.2rem;">🚫</div>Amenorreia</div>
+        <div style="background:white;border-radius:8px;padding:10px;text-align:center;"><div style="font-size:1.2rem;">🔬</div>β-HCG positivo</div>
+        <div style="background:white;border-radius:8px;padding:10px;text-align:center;"><div style="font-size:1.2rem;">🍼</div>Congestão mamária</div>
+      </div>
+    </div>
+    <div class="mc-options" style="margin-top:14px;">
+      <button class="mc-option" onclick="checkMC(this,'q23','a')" data-opt="a"><span class="opt-letter">A</span>Náuseas, Amenorreia e Congestão mamária; Sinal Chadwick; Batimentos cardíacos e β-HCG.</button>
+      <button class="mc-option" onclick="checkMC(this,'q23','b')" data-opt="b"><span class="opt-letter">B</span>Todos são sinais de Certeza pois são objetivamente verificáveis.</button>
+      <button class="mc-option" onclick="checkMC(this,'q23','c')" data-opt="c"><span class="opt-letter">C</span>Náuseas, Amenorreia e β-HCG = Certeza; Batimentos cardíacos = Presunção.</button>
+      <button class="mc-option" onclick="checkMC(this,'q23','d')" data-opt="d"><span class="opt-letter">D</span>Sinal de Chadwick e Batimentos cardíacos = Presunção; os restantes = Probabilidade.</button>
+    </div>
+    <div class="feedback-box" id="q23-fb"></div>
+  </div>
+</div>
+
+<!-- Q24 MC - Consultas -->
+<div class="question-card" id="q24">
+  <div class="question-header">
+    <div class="q-number">24</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">De acordo com as recomendações para a vigilância da gravidez de baixo risco, quantas consultas se realizam e quando deve ocorrer a primeira consulta?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q24','a')" data-opt="a"><span class="opt-letter">A</span>7 consultas; a 1ª antes das 16 semanas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q24','b')" data-opt="b"><span class="opt-letter">B</span>10 consultas; a 1ª antes das 12 semanas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q24','c')" data-opt="c"><span class="opt-letter">C</span>12 consultas; a 1ª antes das 10 semanas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q24','d')" data-opt="d"><span class="opt-letter">D</span>8 consultas; a 1ª antes das 14 semanas.</button>
+    </div>
+    <div class="feedback-box" id="q24-fb"></div>
+  </div>
+</div>
+
+<!-- Q25 TF -->
+<div class="question-card" id="q25">
+  <div class="question-header">
+    <div class="q-number">25</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">Todas as grávidas devem ser suplementadas com ácido fólico (400 µg/dia) na preconceção e até às 12 semanas de gestação.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q25','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q25','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q25-fb"></div>
+  </div>
+</div>
+
+<!-- Q26 MC - Ecografias -->
+<div class="question-card" id="q26">
+  <div class="question-header">
+    <div class="q-number">26</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">As ecografias obstétricas são realizadas em momentos específicos. Qual é o objetivo PRINCIPAL da ecografia do 2º trimestre (20-22 semanas)?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q26','a')" data-opt="a"><span class="opt-letter">A</span>Confirmar a viabilidade fetal e determinar a data provável do parto.</button>
+      <button class="mc-option" onclick="checkMC(this,'q26','b')" data-opt="b"><span class="opt-letter">B</span>Diagnóstico de malformações fetais (é a etapa mais importante para esse fim).</button>
+      <button class="mc-option" onclick="checkMC(this,'q26','c')" data-opt="c"><span class="opt-letter">C</span>Avaliação do crescimento fetal e diagnóstico de malformações tardias.</button>
+      <button class="mc-option" onclick="checkMC(this,'q26','d')" data-opt="d"><span class="opt-letter">D</span>Medição da translucência da nuca como marcador de cromossomopatias.</button>
+    </div>
+    <div class="feedback-box" id="q26-fb"></div>
+  </div>
+</div>
+
+<!-- Q27 TF - BSG -->
+<div class="question-card" id="q27">
+  <div class="question-header">
+    <div class="q-number">27</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">O Boletim de Saúde da Grávida (BSG) deve ser preenchido na 1ª consulta e mantido permanentemente atualizado, devendo a puérpera apresentá-lo também na consulta do puerpério.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q27','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q27','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q27-fb"></div>
+  </div>
+</div>
+
+<!-- Q28 MC - Rastreios -->
+<div class="question-card" id="q28">
+  <div class="question-header">
+    <div class="q-number">28</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Quais dos seguintes rastreios infecciosos são recomendados durante a gravidez?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q28','a')" data-opt="a"><span class="opt-letter">A</span>Citomegalovírus, Hepatite C e Clamídia.</button>
+      <button class="mc-option" onclick="checkMC(this,'q28','b')" data-opt="b"><span class="opt-letter">B</span>Rubéola, Sífilis (VDRL), VIH 1 e 2, Hepatite B, Toxoplasmose e Estreptococos grupo B.</button>
+      <button class="mc-option" onclick="checkMC(this,'q28','c')" data-opt="c"><span class="opt-letter">C</span>Apenas VIH 1, 2 e Hepatite B, os restantes não são necessários.</button>
+      <button class="mc-option" onclick="checkMC(this,'q28','d')" data-opt="d"><span class="opt-letter">D</span>Somente a toxoplasmose e a rubéola, pois são as mais perigosas para o feto.</button>
+    </div>
+    <div class="feedback-box" id="q28-fb"></div>
+  </div>
+</div>
+
+<!-- Q29 MC - Parto prazo -->
+<div class="question-card" id="q29">
+  <div class="question-header">
+    <div class="q-number">29</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">De acordo com a terminologia obstétrica, um "parto de termo" ocorre:</div>
+    </div>
+  </div>
+
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q29','a')" data-opt="a"><span class="opt-letter">A</span>Antes das 37 semanas de gestação.</button>
+      <button class="mc-option" onclick="checkMC(this,'q29','b')" data-opt="b"><span class="opt-letter">B</span>Entre as 37 e as 41 semanas + 6 dias de gestação.</button>
+      <button class="mc-option" onclick="checkMC(this,'q29','c')" data-opt="c"><span class="opt-letter">C</span>Após as 42 semanas de gestação.</button>
+      <button class="mc-option" onclick="checkMC(this,'q29','d')" data-opt="d"><span class="opt-letter">D</span>Exatamente às 40 semanas, nem mais nem menos.</button>
+    </div>
+    <div class="feedback-box" id="q29-fb"></div>
+  </div>
+</div>
+
+<!-- Q30 TF - Ganho peso -->
+<div class="question-card" id="q30">
+  <div class="question-header">
+    <div class="q-number">30</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">Durante a gravidez é natural que o peso aumente devido à formação da placenta, líquido amniótico, crescimento do bebé, volume do útero e do sangue, tecido mamário e gordura de reserva. Um ganho de peso inadequado está associado a maior risco de atraso de crescimento intra-uterino.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q30','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q30','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q30-fb"></div>
+  </div>
+</div>
+
+<!-- Q31 IMAGE - Ecografias trimestres -->
+<div class="question-card" id="q31">
+  <div class="question-header">
+    <div class="q-number">31</div>
+    <div>
+      <div class="q-type-badge">🖼️ Questão com Imagem</div>
+      <div class="question-text">Observa o diagrama das ecografias recomendadas na gravidez de baixo risco e responde: Em que momento se realiza a ecografia do 1º trimestre e qual é a sua principal vantagem?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="dna-visual">
+      <div style="font-size:0.8rem;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🔊 Ecografias Obstétricas – Gravidez Baixo Risco</div>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <div style="background:white;border-radius:12px;padding:14px 16px;min-width:120px;flex:1;max-width:200px;text-align:center;border:2px solid #86efac;">
+          <div style="font-size:1.4rem;">🔬</div>
+          <div style="font-weight:800;font-size:0.85rem;color:#166534;margin-top:4px;">1º Trimestre</div>
+          
+          <div style="font-size:0.72rem;color:#374151;margin-top:4px;text-align:center;line-height:1.4;">Primeiras semanas de grande transformação para a mãe e o bebé</div>
+			
+        </div>
+        <div style="font-size:1.5rem;align-self:center;color:#86efac;">→</div>
+        <div style="background:white;border-radius:12px;padding:14px 16px;min-width:120px;flex:1;max-width:200px;text-align:center;border:2px solid #86efac;">
+          <div style="font-size:1.4rem;">📋</div>
+          <div style="font-weight:800;font-size:0.85rem;color:#166534;margin-top:4px;">2º Trimestre</div>
+          <div style="font-size:0.72rem;color:#374151;margin-top:4px;text-align:center;line-height:1.4;">O bebé cresce e a gravidez torna-se mais visível</div>
+        </div>
+        <div style="font-size:1.5rem;align-self:center;color:#86efac;">→</div>
+        <div style="background:white;border-radius:12px;padding:14px 16px;min-width:120px;flex:1;max-width:200px;text-align:center;border:2px solid #86efac;">
+          <div style="font-size:1.4rem;">🍼</div>
+          <div style="font-weight:800;font-size:0.85rem;color:#166534;margin-top:4px;">3º Trimestre</div>
+          <div style="font-size:0.72rem;color:#374151;margin-top:4px;text-align:center;line-height:1.4;">Fase final de preparação para o nascimento</div>
+        </div>
+      </div>
+    </div>
+    <div class="mc-options" style="margin-top:12px;">
+      <button class="mc-option" onclick="checkMC(this,'q31','a')" data-opt="a"><span class="opt-letter">A</span>Realiza-se entre as 20-22 semanas e serve para diagnosticar malformações fetais.</button>
+      <button class="mc-option" onclick="checkMC(this,'q31','b')" data-opt="b"><span class="opt-letter">B</span>Realiza-se entre as 11-13 semanas e permite datação, diagnóstico de malformações major, avaliação de marcadores de aneuploidia (translucência da nuca) e número de fetos.</button>
+      <button class="mc-option" onclick="checkMC(this,'q31','c')" data-opt="c"><span class="opt-letter">C</span>Realiza-se entre as 30-32 semanas e avalia o crescimento fetal e malformações tardias.</button>
+      <button class="mc-option" onclick="checkMC(this,'q31','d')" data-opt="d"><span class="opt-letter">D</span>Realiza-se entre as 8-10 semanas e confirma apenas a viabilidade fetal.</button>
+    </div>
+    <div class="feedback-box" id="q31-fb"></div>
+  </div>
+</div>
+
+<!-- Q32 DEVELOPMENT -->
+<div class="question-card" id="q32">
+  <div class="question-header">
+    <div class="q-number">32</div>
+    <div>
+      <div class="q-type-badge">📝 Desenvolvimento</div>
+      <div class="question-text">Enumera e explica os principais OBJETIVOS da vigilância pré-natal durante a gravidez, referindo pelo menos 5 objetivos específicos.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <textarea class="dev-textarea" placeholder="Escreve a tua resposta aqui..."></textarea>
+    <div class="dev-hint">💡 Dica: Pensa na avaliação do bem-estar, deteção precoce, fatores de risco, educação para a saúde, preparação para o parto e direitos.</div>
+    <button class="show-answer-btn" onclick="showModelAnswer('q32')">📖 Ver Resposta Modelo</button>
+    <div class="model-answer" id="q32-model">
+      <div class="model-answer-title">📖 Resposta Modelo</div>
+      <div class="model-answer-text">
+        Os principais objetivos da vigilância pré-natal são:<br><br>
+        <strong>1.</strong> Avaliar o bem-estar materno e fetal através da história clínica e dos dados dos exames complementares de diagnóstico.<br><br>
+        <strong>2.</strong> Detetar precocemente situações desviantes do normal curso da gravidez que possam afetar a grávida e o feto, estabelecendo a sua orientação.<br><br>
+        <strong>3.</strong> Identificar fatores de risco que possam vir a interferir no curso normal da gravidez, na saúde da mulher e/ou do feto.<br><br>
+        <strong>4.</strong> Promover a educação para a saúde, integrando o aconselhamento e o apoio psicossocial ao longo da vigilância periódica da gravidez.<br><br>
+        <strong>5.</strong> Preparar para o parto e parentalidade.<br><br>
+        <strong>6.</strong> Informar sobre os deveres e direitos parentais.<br><br>
+        <strong>7.</strong> Garantir que a mulher/casal estejam envolvidos na tomada de decisão, promovendo o direito a uma adequada informação para uma decisão livre e esclarecida.<br><br>
+        <strong>8.</strong> Promover a participação do outro progenitor na vigilância pré-natal.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q33 TF - Suplementação -->
+<div class="question-card" id="q33">
+  <div class="question-header">
+    <div class="q-number">33</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A suplementação com ferro (60 mg ferro ferroso/dia) deve ser efetuada por rotina em todas as grávidas, independentemente dos valores de hemoglobina.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q33','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q33','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q33-fb"></div>
+  </div>
+</div>
+
+<!-- Q34 MC - Análises 1T -->
+<div class="question-card" id="q34">
+  <div class="question-header">
+    <div class="q-number">34</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Quais das seguintes análises fazem parte da avaliação analítica recomendada até às 14 semanas (1º trimestre)?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q34','a')" data-opt="a"><span class="opt-letter">A</span>PTOG com 75g e pesquisa de estreptococos do grupo B.</button>
+      <button class="mc-option" onclick="checkMC(this,'q34','b')" data-opt="b"><span class="opt-letter">B</span>Hemograma, glicemia em jejum, grupo/fator Rh, serologia toxoplasmose/rubéola/VIH/Hepatite B, bacteriúria e rastreio hemoglobinopatias.</button>
+      <button class="mc-option" onclick="checkMC(this,'q34','c')" data-opt="c"><span class="opt-letter">C</span>Apenas hemograma e glicemia em jejum.</button>
+      <button class="mc-option" onclick="checkMC(this,'q34','d')" data-opt="d"><span class="opt-letter">D</span>Colheita vaginal/ano-retal para pesquisa de estreptococos beta hemolítico.</button>
+    </div>
+    <div class="feedback-box" id="q34-fb"></div>
+  </div>
+</div>
+
+<!-- Q35 MC - Ganho peso -->
+<div class="question-card" id="q35">
+  <div class="question-header">
+    <div class="q-number">35</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Uma grávida com IMC pré-gestacional normoponderal (18,5 - 24,9 kg/m²) tem como recomendação de ganho de peso total durante a gravidez:</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q35','a')" data-opt="a"><span class="opt-letter">A</span>12,5 a 18 kg.</button>
+      <button class="mc-option" onclick="checkMC(this,'q35','b')" data-opt="b"><span class="opt-letter">B</span>11,5 a 16 kg.</button>
+      <button class="mc-option" onclick="checkMC(this,'q35','c')" data-opt="c"><span class="opt-letter">C</span>7 a 11,5 kg.</button>
+      <button class="mc-option" onclick="checkMC(this,'q35','d')" data-opt="d"><span class="opt-letter">D</span>5 a 9 kg.</button>
+    </div>
+    <div class="feedback-box" id="q35-fb"></div>
+  </div>
+</div>
+
+<!-- ===========================
+     MÓDULO 3: PARTO / PUERPÉRIO (Q36-Q42)
+     =========================== -->
+<div class="section-header">
+  <div class="section-icon">👶</div>
+  <div>
+    <h2>Módulo 3 – Alterações Corporais, Parto e Puerpério</h2>
+    <p>Verdadeiro/Falso · Escolha Múltipla · Desenvolvimento</p>
+  </div>
+</div>
+
+<!-- Q36 TF -->
+<div class="question-card" id="q36">
+  <div class="question-header">
+    <div class="q-number">36</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">Durante a gravidez, o aumento do fluxo vaginal (leucorreia) e o aumento do risco de infeções urinárias são alterações normais que decorrem das modificações fisiológicas ao nível da pélvis.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q36','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q36','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q36-fb"></div>
+  </div>
+</div>
+
+<!-- Q37 MC -->
+<div class="question-card" id="q37">
+  <div class="question-header">
+    <div class="q-number">37</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Qual das seguintes alterações corporais durante a gravidez está relacionada com o dorso?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q37','a')" data-opt="a"><span class="opt-letter">A</span>Eritema palmar e pressão sobre a circulação venosa das pernas (varizes/edemas).</button>
+      <button class="mc-option" onclick="checkMC(this,'q37','b')" data-opt="b"><span class="opt-letter">B</span>Acentuação da curvatura lombar, causando dorsalgias.</button>
+      <button class="mc-option" onclick="checkMC(this,'q37','c')" data-opt="c"><span class="opt-letter">C</span>Leucorreia e aumento do risco de infeções urinárias.</button>
+      <button class="mc-option" onclick="checkMC(this,'q37','d')" data-opt="d"><span class="opt-letter">D</span>Estrias da gravidez e linha negra no abdómen.</button>
+    </div>
+    <div class="feedback-box" id="q37-fb"></div>
+  </div>
+</div>
+
+<!-- Q38 TF -->
+<div class="question-card" id="q38">
+  <div class="question-header">
+    <div class="q-number">38</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A idade gestacional definitiva é definida pelo comprimento crânio-caudal na ecografia das 11-13 semanas e 6 dias, mantendo-se inalterável ao longo de toda a gravidez.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q38','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q38','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q38-fb"></div>
+  </div>
+</div>
+
+<!-- Q39 MC -->
+<div class="question-card" id="q39">
+  <div class="question-header">
+    <div class="q-number">39</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Qual das seguintes afirmações sobre a rastreio de cromossomopatias é CORRETA?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q39','a')" data-opt="a"><span class="opt-letter">A</span>O rastreio de síndrome de Down não é recomendado de rotina, apenas em grávidas de alto risco.</button>
+      <button class="mc-option" onclick="checkMC(this,'q39','b')" data-opt="b"><span class="opt-letter">B</span>O rastreio combinado (translucência da nuca + marcadores bioquímicos) é o recomendado; se a grávida chegar após as 14 semanas, realiza-se o teste quádruplo do 2º trimestre.</button>
+      <button class="mc-option" onclick="checkMC(this,'q39','c')" data-opt="c"><span class="opt-letter">C</span>A biópsia das vilosidades coriónicas é sempre o 1º exame a realizar em todas as grávidas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q39','d')" data-opt="d"><span class="opt-letter">D</span>O rastreio de síndrome de Down só é possível no 2º trimestre, entre as 20-22 semanas.</button>
+    </div>
+    <div class="feedback-box" id="q39-fb"></div>
+  </div>
+</div>
+
+<!-- Q40 MC - Habitação Info pré-natal -->
+<div class="question-card" id="q40">
+  <div class="question-header">
+    <div class="q-number">40</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">A informação pré-natal que deve ser fornecida à grávida inclui vários temas. Qual dos seguintes NÃO consta das recomendações de informação pré-natal?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q40','a')" data-opt="a"><span class="opt-letter">A</span>Alterações fisiológicas da gravidez e estilos de vida saudáveis.</button>
+      <button class="mc-option" onclick="checkMC(this,'q40','b')" data-opt="b"><span class="opt-letter">B</span>Amamentação e cuidados ao recém-nascido.</button>
+      <button class="mc-option" onclick="checkMC(this,'q40','c')" data-opt="c"><span class="opt-letter">C</span>Recomendações de destinos de viagem para o período pós-parto.</button>
+      <button class="mc-option" onclick="checkMC(this,'q40','d')" data-opt="d"><span class="opt-letter">D</span>Prevenção primária da transmissão da toxoplasmose.</button>
+    </div>
+    <div class="feedback-box" id="q40-fb"></div>
+  </div>
+</div>
+
+<!-- Q41 DEVELOPMENT -->
+<div class="question-card" id="q41">
+  <div class="question-header">
+    <div class="q-number">41</div>
+    <div>
+      <div class="q-type-badge">📝 Desenvolvimento</div>
+      <div class="question-text">Explica a importância da alimentação durante a gravidez, referindo o conceito de "comer por dois" e as implicações do ganho de peso inadequado (por excesso ou por défice).</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <textarea class="dev-textarea" placeholder="Escreve a tua resposta aqui..."></textarea>
+    <div class="dev-hint">💡 Dica: Considera o IMC pré-gestacional, os riscos do excesso e do défice de peso, e a recomendação sobre as necessidades calóricas.</div>
+    <button class="show-answer-btn" onclick="showModelAnswer('q41')">📖 Ver Resposta Modelo</button>
+    <div class="model-answer" id="q41-model">
+      <div class="model-answer-title">📖 Resposta Modelo</div>
+      <div class="model-answer-text">
+        Durante a gravidez, as necessidades nutricionais aumentam para apoiar o crescimento e desenvolvimento do bebé, bem como o metabolismo materno. No entanto, isto não significa que a grávida deva "comer por dois" – esta ideia é um mito. As necessidades calóricas adicionais são relativamente modestas e variam consoante o trimestre.<br><br>
+        <strong>Ganho de peso insuficiente:</strong> Está associado ao aumento do risco de atraso de crescimento intra-uterino (RCIU) e de mortalidade peri-natal. O bebé poderá nascer com baixo peso, o que compromete o seu desenvolvimento.<br><br>
+        <strong>Ganho de peso excessivo:</strong> Está associado ao aumento do peso do bebé ao nascimento (macrossomia fetal) e, secundariamente, ao aumento do risco de complicações obstétricas (parto difícil) e de doenças crónicas na vida adulta da criança (obesidade, diabetes).<br><br>
+        As recomendações são adaptadas ao IMC pré-gestacional: mulheres com baixo peso devem ganhar entre 12,5-18 kg; normoponderal entre 11,5-16 kg; excesso de peso entre 7-11,5 kg; e obesas entre 5-9 kg. Uma alimentação saudável e variada, sem restrições excessivas mas também sem excessos, é o pilar fundamental.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q42 TF -->
+<div class="question-card" id="q42">
+  <div class="question-header">
+    <div class="q-number">42</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A pesquisa de estreptococos do grupo B deve ser realizada entre as 35-37 semanas de gestação, através de colheita do 1/3 externo da vagina e ano-retal.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q42','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q42','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q42-fb"></div>
+  </div>
+</div>
+
+<!-- ===========================
+     MÓDULO 3B: FISIOLOGIA DO PARTO, PUERPÉRIO E COMPLICAÇÕES (Q49-Q80)
+     =========================== -->
+
+<!-- ===========================
+     MÓDULO 3B – FISIOLOGIA DO PARTO, PUERPÉRIO E COMPLICAÇÕES (Q49-Q80)
+     =========================== -->
+<div class="section-header">
+  <div class="section-icon">🏥</div>
+  <div>
+    <h2>Módulo 3B – Fisiologia do Parto, Puerpério e Complicações</h2>
+    <p>Verdadeiro/Falso · Escolha Múltipla · Desenvolvimento · Imagens</p>
+  </div>
+</div>
+
+<!-- Q49 LABELING – Male Reproductive System -->
+<div class="question-card" id="q49">
+  <div class="question-header">
+    <div class="q-number">49</div>
+    <div>
+      <div class="q-type-badge">🖼️ Legenda de Imagem</div>
+      <div class="question-text">
+        Observa o diagrama do <strong>aparelho reprodutor masculino</strong>.
+        Escreve o nome correto de cada estrutura assinalada com os números 1 a 13.
+      </div>
+    </div>
+  </div>
+
+  <div class="question-body">
+
+
+    <!-- IMAGEM NO TOPO -->
+    <div style="text-align:center;margin-bottom:25px;">
+      <img 
+        src="imagens/reprodutor-masculino.png"
+        alt="Sistema reprodutor masculino"
+        style="width:100%;max-width:700px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,0.15);"
+      >
+    </div>
+
+    <!-- CAMPOS DE RESPOSTA -->
+    <div style="max-width:700px;margin:0 auto;">
+      <p style="font-size:0.95rem;font-weight:700;color:#2a9d8f;margin-bottom:16px;">
+        ✏️ Escreve o nome de cada estrutura:
+      </p>
+
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        
+        <div style="display:flex;align-items:center;gap:10px;"><span class="num">1</span><input type="text" id="q49_1" placeholder="Nome da estrutura 1..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">2</span><input type="text" id="q49_2" placeholder="Nome da estrutura 2..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">3</span><input type="text" id="q49_3" placeholder="Nome da estrutura 3..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">4</span><input type="text" id="q49_4" placeholder="Nome da estrutura 4..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">5</span><input type="text" id="q49_5" placeholder="Nome da estrutura 5..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">6</span><input type="text" id="q49_6" placeholder="Nome da estrutura 6..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">7</span><input type="text" id="q49_7" placeholder="Nome da estrutura 7..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">8</span><input type="text" id="q49_8" placeholder="Nome da estrutura 8..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">9</span><input type="text" id="q49_9" placeholder="Nome da estrutura 9..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">10</span><input type="text" id="q49_10" placeholder="Nome da estrutura 10..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">11</span><input type="text" id="q49_11" placeholder="Nome da estrutura 11..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">12</span><input type="text" id="q49_12" placeholder="Nome da estrutura 12..." class="input-q49"></div>
+		<div style="display:flex;align-items:center;gap:10px;"><span class="num">13</span><input type="text" id="q49_13" placeholder="Nome da estrutura 13..." class="input-q49"></div>
+      </div>
+
+      <button onclick="corrigirQ49()" style="margin-top:18px;padding:12px 24px;border:none;border-radius:10px;background:linear-gradient(135deg,#2a9d8f,#1f7f73);color:white;font-size:0.9rem;font-weight:800;cursor:pointer;">
+  ✔ Verificar respostas
+</button>
+
+<div id="resultado-q49" style="margin-top:12px;font-weight:bold;font-size:0.92rem;line-height:1.5;"></div>
+
+      <div class="model-answer" id="q49-model">
+        <div class="model-answer-title">📖 Respostas Corretas</div>
+        <div class="model-answer-text">
+          1 – Bexiga<br>
+          2 – Ureter<br>
+          3 – Reto<br>
+          4 – Vesícula seminal<br>
+          5 – Próstata<br>
+          6 – Canal deferente<br>
+          7 – Pénis<br>
+          8 – Testículo<br>
+          9 – Escroto<br>
+          10 – Corpos cavernosos<br>
+          11 – Uretra<br>
+          12 – Epidídimo<br>
+          13 – Ânus
+        </div>
+      </div>
+    </div>
+
+    <div class="feedback-box" id="q49-fb"></div>
+  </div>
+</div>
+	
+<!-- Q50 MC – Male system roles -->
+<div class="question-card" id="q50">
+  <div class="question-header">
+    <div class="q-number">50</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Qual é a função principal da <strong>próstata</strong> no sistema reprodutor masculino?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q50','a')" data-opt="a"><span class="opt-letter">A</span>Produzir espermatozoides em conjunto com os testículos.</button>
+      <button class="mc-option" onclick="checkMC(this,'q50','b')" data-opt="b"><span class="opt-letter">B</span>Produzir o líquido prostático (alcalino) que protege os espermatozoides da acidez da uretra e da vagina, permitindo a sua mobilidade.</button>
+      <button class="mc-option" onclick="checkMC(this,'q50','c')" data-opt="c"><span class="opt-letter">C</span>Armazenar e transportar o sémen para o exterior.</button>
+      <button class="mc-option" onclick="checkMC(this,'q50','d')" data-opt="d"><span class="opt-letter">D</span>Produzir as hormonas masculinas (testosterona).</button>
+    </div>
+    <div class="feedback-box" id="q50-fb"></div>
+  </div>
+</div>
+
+<!-- Q51 TF – Fisiologia do parto -->
+<div class="question-card" id="q51">
+  <div class="question-header">
+    <div class="q-number">51</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">O trabalho de parto é dividido em três estadios: o primeiro (dilatação), o segundo (expulsão do feto) e o terceiro (dequitadura/expulsão da placenta).</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q51','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q51','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q51-fb"></div>
+  </div>
+</div>
+
+<!-- Q52 MC – Fases do parto -->
+<div class="question-card" id="q52">
+  <div class="question-header">
+    <div class="q-number">52</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">O 1º estadio do trabalho de parto (fase de dilatação) termina quando:</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q52','a')" data-opt="a"><span class="opt-letter">A</span>A placenta é expulsa pelo canal de parto.</button>
+      <button class="mc-option" onclick="checkMC(this,'q52','b')" data-opt="b"><span class="opt-letter">B</span>O colo do útero atingir a dilatação completa (10 cm).</button>
+      <button class="mc-option" onclick="checkMC(this,'q52','c')" data-opt="c"><span class="opt-letter">C</span>O bebé emerge completamente do canal de parto.</button>
+      <button class="mc-option" onclick="checkMC(this,'q52','d')" data-opt="d"><span class="opt-letter">D</span>As contrações uterinas têm uma frequência de 2 em 10 minutos.</button>
+    </div>
+    <div class="feedback-box" id="q52-fb"></div>
+  </div>
+</div>
+
+<!-- Q53 MC – Dequitadura -->
+<div class="question-card" id="q53">
+  <div class="question-header">
+    <div class="q-number">53</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">O que é a <strong>dequitadura</strong> no contexto do trabalho de parto?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q53','a')" data-opt="a"><span class="opt-letter">A</span>O processo de dilatação progressiva do colo do útero durante o trabalho de parto.</button>
+      <button class="mc-option" onclick="checkMC(this,'q53','b')" data-opt="b"><span class="opt-letter">B</span>A rotura espontânea da bolsa amniótica antes do início do trabalho de parto.</button>
+      <button class="mc-option" onclick="checkMC(this,'q53','c')" data-opt="c"><span class="opt-letter">C</span>O 3º estadio do trabalho de parto, correspondente à expulsão da placenta e membranas após o nascimento do bebé.</button>
+      <button class="mc-option" onclick="checkMC(this,'q53','d')" data-opt="d"><span class="opt-letter">D</span>A posição do bebé dentro do útero com a cabeça voltada para baixo.</button>
+    </div>
+    <div class="feedback-box" id="q53-fb"></div>
+  </div>
+</div>
+
+<!-- Q54 TF – Parto normal -->
+<div class="question-card" id="q54">
+  <div class="question-header">
+    <div class="q-number">54</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">No parto eutócico (parto normal/vaginal), o bebé nasce pela via vaginal em apresentação cefálica, sem necessidade de instrumentação ou intervenção cirúrgica.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q54','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q54','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q54-fb"></div>
+  </div>
+</div>
+
+<!-- Q55 MC – Tipos de parto -->
+<div class="question-card" id="q55">
+  <div class="question-header">
+    <div class="q-number">55</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Qual das seguintes afirmações sobre os tipos de parto é CORRETA?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q55','a')" data-opt="a"><span class="opt-letter">A</span>O parto por cesariana é sempre a opção mais segura para a mãe e para o bebé, independentemente da situação clínica.</button>
+      <button class="mc-option" onclick="checkMC(this,'q55','b')" data-opt="b"><span class="opt-letter">B</span>O parto distócico é aquele que requer alguma forma de intervenção (fórceps, ventosa ou cesariana) para auxiliar ou substituir o parto vaginal espontâneo.</button>
+      <button class="mc-option" onclick="checkMC(this,'q55','c')" data-opt="c"><span class="opt-letter">C</span>O uso de fórceps e ventosa são técnicas utilizadas exclusivamente em cesarianas de emergência.</button>
+      <button class="mc-option" onclick="checkMC(this,'q55','d')" data-opt="d"><span class="opt-letter">D</span>O parto pré-termo ocorre sempre após as 37 semanas de gestação.</button>
+    </div>
+    <div class="feedback-box" id="q55-fb"></div>
+  </div>
+</div>
+
+<!-- Q56 MC – Cesariana -->
+<div class="question-card" id="q56">
+  <div class="question-header">
+    <div class="q-number">56</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">A cesariana é uma cirurgia em que o bebé é retirado através de incisão no abdómen e útero da mãe. Qual das seguintes situações é uma indicação frequente para cesariana?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q56','a')" data-opt="a"><span class="opt-letter">A</span>Apresentação cefálica com boa progressão do trabalho de parto.</button>
+      <button class="mc-option" onclick="checkMC(this,'q56','b')" data-opt="b"><span class="opt-letter">B</span>Apresentação pélvica (nádegas), sofrimento fetal, placenta prévia ou desproporção feto-pélvica.</button>
+      <button class="mc-option" onclick="checkMC(this,'q56','c')" data-opt="c"><span class="opt-letter">C</span>Trabalho de parto com contrações regulares e colo uterino dilatado adequadamente.</button>
+      <button class="mc-option" onclick="checkMC(this,'q56','d')" data-opt="d"><span class="opt-letter">D</span>Rotura de membranas sem complicações após as 37 semanas.</button>
+    </div>
+    <div class="feedback-box" id="q56-fb"></div>
+  </div>
+</div>
+
+<!-- Q57 TF – Episiotomia -->
+<div class="question-card" id="q57">
+  <div class="question-header">
+    <div class="q-number">57</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A episiotomia é um corte cirúrgico realizado no períneo durante o parto vaginal para alargar a abertura vaginal e facilitar a saída do bebé, sendo atualmente recomendada de rotina em todos os partos vaginais.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q57','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q57','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q57-fb"></div>
+  </div>
+</div>
+
+<!-- Q58 DEV – Fisiologia do parto -->
+<div class="question-card" id="q58">
+  <div class="question-header">
+    <div class="q-number">58</div>
+    <div>
+      <div class="q-type-badge">📝 Desenvolvimento</div>
+      <div class="question-text">Descreve os três estadios do trabalho de parto, indicando o que acontece em cada um deles e quanto tempo podem durar em média numa primípara (mulher a dar à luz pela 1ª vez).</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <textarea class="dev-textarea" placeholder="Escreve a tua resposta aqui..."></textarea>
+    <div class="dev-hint">💡 Dica: 1º Estadio (dilatação), 2º Estadio (expulsão), 3º Estadio (dequitadura). Lembra-te das fases latente e ativa do 1º estadio.</div>
+    <button class="show-answer-btn" onclick="showModelAnswer('q58')">📖 Ver Resposta Modelo</button>
+    <div class="model-answer" id="q58-model">
+      <div class="model-answer-title">📖 Resposta Modelo</div>
+      <div class="model-answer-text">
+        <strong>1º Estadio – Fase de Dilatação:</strong> Inicia-se com o início das contrações regulares e termina com a dilatação completa do colo uterino (10 cm). Divide-se em fase latente (dilatação lenta, até 6 cm) e fase ativa (dilatação mais rápida, de 6 a 10 cm). Numa primípara pode durar 10 a 20 horas no total. As contrações tornam-se progressivamente mais frequentes, intensas e longas.<br><br>
+        <strong>2º Estadio – Fase de Expulsão:</strong> Começa com a dilatação completa e termina com o nascimento do bebé. A mulher sente necessidade de fazer força (puxos) com as contrações. Dura geralmente 30 minutos a 2 horas numa primípara. O bebé desce pelo canal de parto e nasce pela vulva.<br><br>
+        <strong>3º Estadio – Dequitadura:</strong> Inicia-se após o nascimento do bebé e termina com a expulsão completa da placenta e membranas amnióticas. Normalmente ocorre entre os 5 e os 30 minutos após o nascimento. São administradas frequentemente uterotónicos (ex: oxitocina) para facilitar este processo e prevenir hemorragia.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q59 MC – Ambiente e emoções durante o parto -->
+<div class="question-card" id="q59">
+  <div class="question-header">
+    <div class="q-number">59</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Relativamente ao ambiente e às emoções durante o trabalho de parto, qual das seguintes afirmações é CORRETA?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q59','a')" data-opt="a"><span class="opt-letter">A</span>O ambiente durante o trabalho de parto não tem qualquer influência na progressão do mesmo nem na experiência da parturiente.</button>
+      <button class="mc-option" onclick="checkMC(this,'q59','b')" data-opt="b"><span class="opt-letter">B</span>Um ambiente calmo, com iluminação suave, temperatura confortável e suporte emocional contínuo (doula, acompanhante) contribui positivamente para a progressão do trabalho de parto e para a experiência da mulher.</button>
+      <button class="mc-option" onclick="checkMC(this,'q59','c')" data-opt="c"><span class="opt-letter">C</span>O medo e a ansiedade durante o parto facilitam as contrações, tornando o trabalho de parto mais rápido.</button>
+      <button class="mc-option" onclick="checkMC(this,'q59','d')" data-opt="d"><span class="opt-letter">D</span>A presença de acompanhante durante o parto é proibida por lei para garantir a segurança da parturiente.</button>
+    </div>
+    <div class="feedback-box" id="q59-fb"></div>
+  </div>
+</div>
+
+<!-- Q60 TF – Dor no parto -->
+<div class="question-card" id="q60">
+  <div class="question-header">
+    <div class="q-number">60</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A analgesia epidural (peridural) é atualmente uma das principais estratégias de alívio da dor durante o trabalho de parto, podendo ser solicitada pela parturiente e administrada por anestesiologista.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q60','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q60','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q60-fb"></div>
+  </div>
+</div>
+
+<!-- Q61 MC – Plano de parto -->
+<div class="question-card" id="q61">
+  <div class="question-header">
+    <div class="q-number">61</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">O <strong>plano de parto</strong> é um documento elaborado pela grávida/casal durante a gravidez. Para que serve?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q61','a')" data-opt="a"><span class="opt-letter">A</span>Serve para garantir que o parto decorra exatamente como planeado, sem qualquer possibilidade de alteração pela equipa de saúde.</button>
+      <button class="mc-option" onclick="checkMC(this,'q61','b')" data-opt="b"><span class="opt-letter">B</span>Serve para comunicar as preferências e desejos da grávida/casal relativamente ao parto (analgesia, posição, acompanhante, corte do cordão, etc.), facilitando a comunicação com a equipa de saúde.</button>
+      <button class="mc-option" onclick="checkMC(this,'q61','c')" data-opt="c"><span class="opt-letter">C</span>É um documento obrigatório exigido por lei para que a grávida possa ser admitida na maternidade.</button>
+      <button class="mc-option" onclick="checkMC(this,'q61','d')" data-opt="d"><span class="opt-letter">D</span>É elaborado exclusivamente pela equipa médica e entregue à grávida para assinar antes do parto.</button>
+    </div>
+    <div class="feedback-box" id="q61-fb"></div>
+  </div>
+</div>
+
+<!-- Q62 PREMIUM – Sequência da fecundação -->
+<div class="question-card" id="q62">
+  <div class="question-header">
+    <div class="q-number">62</div>
+    <div>
+      <div class="q-type-badge">🧠 Ordenação</div>
+      <div class="question-text">
+        Ordena corretamente o <strong>percurso dos espermatozoides até ao local da fecundação</strong>.
+        Escreve as <strong>letras (A, B, C, D, E)</strong> pela ordem correta.
+      </div>
+    </div>
+  </div>
+  <div class="question-body">
+    <!-- Etapas -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:20px;">
+      
+      <div class="step-box">
+        <strong>A)</strong> Trompa de Falópio
+      </div>
+      <div class="step-box">
+        <strong>B)</strong> Vagina
+      </div>
+      <div class="step-box">
+        <strong>C)</strong> Útero
+      </div>
+      <div class="step-box">
+        <strong>D)</strong> Colo do Útero
+      </div>
+      <div class="step-box">
+        <strong>E)</strong> Ovário
+      </div>
+    </div>
+    <!-- Respostas -->
+    <p style="font-size:0.95rem;font-weight:700;color:#2a9d8f;margin-bottom:14px;">
+      ✏️ Escreve a sequência correta:
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <input type="text" id="q62_1" class="input-q49" placeholder="1ª letra">
+      <input type="text" id="q62_2" class="input-q49" placeholder="2ª letra">
+      <input type="text" id="q62_3" class="input-q49" placeholder="3ª letra">
+      <input type="text" id="q62_4" class="input-q49" placeholder="4ª letra">
+      <input type="text" id="q62_5" class="input-q49" placeholder="5ª letra">
+    </div>
+    <button onclick="corrigirQ62()" style="margin-top:18px;padding:12px 24px;border:none;border-radius:10px;background:linear-gradient(135deg,#2a9d8f,#1f7f73);color:white;font-size:0.9rem;font-weight:800;cursor:pointer;">
+      ✔ Verificar respostas
+    </button>
+    <div id="resultado-q62" style="margin-top:12px;font-weight:bold;"></div>
+  </div>
+</div>
+	
+<!-- Q63 TF – Puerpério -->
+<div class="question-card" id="q63">
+  <div class="question-header">
+    <div class="q-number">63</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">O puerpério (pós-parto) é o período que se inicia logo após a expulsão da placenta e se prolonga habitualmente por 6 a 8 semanas, durante o qual o organismo materno retorna ao estado pré-gestacional.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q63','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q63','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q63-fb"></div>
+  </div>
+</div>
+
+<!-- Q64 MC – Cuidados à puérpera -->
+<div class="question-card" id="q64">
+  <div class="question-header">
+    <div class="q-number">64</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Quais são os cuidados prioritários à puérpera nas primeiras horas após o parto?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q64','a')" data-opt="a"><span class="opt-letter">A</span>Iniciar de imediato a alimentação sólida e a atividade física intensa para acelerar a recuperação.</button>
+      <button class="mc-option" onclick="checkMC(this,'q64','b')" data-opt="b"><span class="opt-letter">B</span>Vigilância de sinais vitais, avaliação dos lóquios e da involução uterina, cuidados à ferida (episiotomia/cesariana), suporte ao aleitamento materno e apoio emocional.</button>
+      <button class="mc-option" onclick="checkMC(this,'q64','c')" data-opt="c"><span class="opt-letter">C</span>Manter a puérpera em repouso absoluto sem qualquer vigilância durante as primeiras 24 horas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q64','d')" data-opt="d"><span class="opt-letter">D</span>Administrar anticoagulantes a todas as puérperas independentemente do tipo de parto.</button>
+    </div>
+    <div class="feedback-box" id="q64-fb"></div>
+  </div>
+</div>
+
+<!-- Q65 MC – Aleitamento materno -->
+<div class="question-card" id="q65">
+  <div class="question-header">
+    <div class="q-number">65</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Relativamente ao aleitamento materno, qual das seguintes afirmações é CORRETA?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q65','a')" data-opt="a"><span class="opt-letter">A</span>O colostro (primeiros leite produzido após o parto) tem baixo valor nutritivo e deve ser substituído por fórmula nas primeiras 48h.</button>
+      <button class="mc-option" onclick="checkMC(this,'q65','b')" data-opt="b"><span class="opt-letter">B</span>A OMS recomenda o aleitamento materno exclusivo até aos 6 meses, e complementado até aos 2 anos ou mais. O colostro é rico em anticorpos e é o alimento ideal para o recém-nascido.</button>
+      <button class="mc-option" onclick="checkMC(this,'q65','c')" data-opt="c"><span class="opt-letter">C</span>O aleitamento materno deve ser suspenso durante a primeira semana pós-parto para permitir a recuperação das mamas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q65','d')" data-opt="d"><span class="opt-letter">D</span>A subida do leite materno ocorre normalmente logo nas primeiras 2 horas após o parto.</button>
+    </div>
+    <div class="feedback-box" id="q65-fb"></div>
+  </div>
+</div>
+
+<!-- Q66 TF – Involução uterina -->
+<div class="question-card" id="q66">
+  <div class="question-header">
+    <div class="q-number">66</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A involução uterina é o processo pelo qual o útero retorna ao seu tamanho e posição normais após o parto, sendo facilitada pela amamentação (através da libertação de ocitocina).</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q66','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q66','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q66-fb"></div>
+  </div>
+</div>
+
+<!-- Q67 MC – Lóquios normais -->
+<div class="question-card" id="q67">
+  <div class="question-header">
+    <div class="q-number">67</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Os <strong>lóquios</strong> são a secreção vaginal normal do pós-parto. Qual é a sequência correta da sua evolução?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q67','a')" data-opt="a"><span class="opt-letter">A</span>Lóquios serosos (amarelados) → lóquios rubros (vermelhos) → lóquios brancos (esbranquiçados).</button>
+      <button class="mc-option" onclick="checkMC(this,'q67','b')" data-opt="b"><span class="opt-letter">B</span>Lóquios rubros (vermelhos, 1-4 dias) → lóquios serosos (rosa/acastanhados, 4-10 dias) → lóquios brancos/albos (esbranquiçados/amarelados, até 6ª semana).</button>
+      <button class="mc-option" onclick="checkMC(this,'q67','c')" data-opt="c"><span class="opt-letter">C</span>Lóquios brancos (esbranquiçados) → lóquios serosos (cor de rosa) → lóquios rubros (avermelhados).</button>
+      <button class="mc-option" onclick="checkMC(this,'q67','d')" data-opt="d"><span class="opt-letter">D</span>Os lóquios mantêm sempre a mesma cor e consistência ao longo de todo o puerpério.</button>
+    </div>
+    <div class="feedback-box" id="q67-fb"></div>
+  </div>
+</div>
+
+<!-- Q68 MC – Lóquios sinais de alerta -->
+<div class="question-card" id="q68">
+  <div class="question-header">
+    <div class="q-number">68</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Qual das seguintes características dos lóquios deve ser considerada um <strong>sinal de alerta</strong> que requer comunicação imediata à equipa de saúde?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q68','a')" data-opt="a"><span class="opt-letter">A</span>Lóquios rubros (vermelhos) nos primeiros 3-4 dias após o parto.</button>
+      <button class="mc-option" onclick="checkMC(this,'q68','b')" data-opt="b"><span class="opt-letter">B</span>Lóquios com odor fétido, cor esverdeada ou purulenta, ou hemorragia abundante com coágulos em qualquer momento do puerpério.</button>
+      <button class="mc-option" onclick="checkMC(this,'q68','c')" data-opt="c"><span class="opt-letter">C</span>Diminuição progressiva da quantidade de lóquios ao longo das primeiras semanas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q68','d')" data-opt="d"><span class="opt-letter">D</span>Lóquios serosos (cor de rosa) entre o 4º e o 10º dia após o parto.</button>
+    </div>
+    <div class="feedback-box" id="q68-fb"></div>
+  </div>
+</div>
+
+<!-- Q69 TF – Lóquios -->
+<div class="question-card" id="q69">
+  <div class="question-header">
+    <div class="q-number">69</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">Os lóquios com odor fétido são sempre normais no pós-parto e não requerem qualquer avaliação médica.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q69','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q69','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q69-fb"></div>
+  </div>
+</div>
+
+<!-- Q70 DEV – Lóquios -->
+<div class="question-card" id="q70">
+  <div class="question-header">
+    <div class="q-number">70</div>
+    <div>
+      <div class="q-type-badge">📝 Desenvolvimento</div>
+      <div class="question-text">Descreve as características normais dos lóquios ao longo do puerpério e indica pelo menos 4 sinais de alerta que devem ser comunicados à equipa de saúde.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <textarea class="dev-textarea" placeholder="Escreve a tua resposta aqui..."></textarea>
+    <div class="dev-hint">💡 Dica: Lembra-te das 3 fases dos lóquios (rubros, serosos, brancos) e dos sinais que indicam infeção ou complicação.</div>
+    <button class="show-answer-btn" onclick="showModelAnswer('q70')">📖 Ver Resposta Modelo</button>
+    <div class="model-answer" id="q70-model">
+      <div class="model-answer-title">📖 Resposta Modelo</div>
+      <div class="model-answer-text">
+        <strong>Características Normais dos Lóquios:</strong><br>
+        Os lóquios são a secreção vaginal resultante da involução uterina após o parto. Evoluem em três fases:<br><br>
+        <strong>1ª – Lóquios Rubros (1º ao 4º dia):</strong> Cor vermelha viva, semelhante à menstruação abundante, com possíveis pequenos coágulos. Compostos principalmente por sangue, decidua e restos placentares.<br><br>
+        <strong>2ª – Lóquios Serosos (4º ao 10º dia):</strong> Cor rosa/acastanhada, menos espessos. Compostos por sangue, leucócitos e secreções uterinas.<br><br>
+        <strong>3ª – Lóquios Brancos/Albos (10º dia até à 6ª semana):</strong> Cor esbranquiçada ou amarelada, compostos principalmente por leucócitos e células epiteliais.<br><br>
+        <strong>Sinais de Alerta (a comunicar à equipa de saúde):</strong><br>
+        1. Odor fétido ou desagradável (sinal de infeção – endometrite)<br>
+        2. Cor esverdeada, purulenta ou aspeto anormal<br>
+        3. Hemorragia abundante súbita ou com coágulos volumosos (sinal de hemorragia pós-parto)<br>
+        4. Retorno a lóquios rubros após a sua diminuição (pode indicar infeção ou sub-involução uterina)<br>
+        5. Febre associada às alterações dos lóquios<br>
+        6. Ausência total de lóquios nas primeiras semanas (loquiometra – retenção de lóquios)
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q71 MC – Complicações maternas pós-parto -->
+<div class="question-card" id="q71">
+  <div class="question-header">
+    <div class="q-number">71</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Qual das seguintes é considerada uma das complicações maternas mais graves do pós-parto imediato?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q71','a')" data-opt="a"><span class="opt-letter">A</span>Ligeiro desconforto perineal relacionado com a episiotomia.</button>
+      <button class="mc-option" onclick="checkMC(this,'q71','b')" data-opt="b"><span class="opt-letter">B</span>Hemorragia pós-parto (HPP) – definida como perda de sangue superior a 500 ml no parto vaginal ou 1000 ml na cesariana, podendo ser fatal se não tratada imediatamente.</button>
+      <button class="mc-option" onclick="checkMC(this,'q71','c')" data-opt="c"><span class="opt-letter">C</span>Congestão mamária ligeira nos primeiros dias de aleitamento.</button>
+      <button class="mc-option" onclick="checkMC(this,'q71','d')" data-opt="d"><span class="opt-letter">D</span>Ligeiro aumento da frequência urinária nas primeiras 24 horas.</button>
+    </div>
+    <div class="feedback-box" id="q71-fb"></div>
+  </div>
+</div>
+
+<!-- Q72 TF – Endometrite -->
+<div class="question-card" id="q72">
+  <div class="question-header">
+    <div class="q-number">72</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A endometrite pós-parto é uma infeção do endométrio (revestimento interno do útero) que se manifesta geralmente com febre, dor uterina à palpação, lóquios com odor fétido e mal-estar geral.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q72','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q72','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q72-fb"></div>
+  </div>
+</div>
+
+<!-- Q73 MC – Baby blues vs depressão pós-parto -->
+<div class="question-card" id="q73">
+  <div class="question-header">
+    <div class="q-number">73</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Qual é a diferença entre o <em>baby blues</em> e a <strong>depressão pós-parto</strong>?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q73','a')" data-opt="a"><span class="opt-letter">A</span>São a mesma condição, apenas com nomes diferentes consoante a gravidade dos sintomas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q73','b')" data-opt="b"><span class="opt-letter">B</span>O baby blues é uma alteração emocional transitória (2-3 dias a 2 semanas), muito frequente, caracterizada por choro fácil e labilidade emocional. A depressão pós-parto é uma perturbação mais grave, persistente (mais de 2 semanas), que requer acompanhamento profissional.</button>
+      <button class="mc-option" onclick="checkMC(this,'q73','c')" data-opt="c"><span class="opt-letter">C</span>O baby blues é mais grave que a depressão pós-parto e requer internamento hospitalar imediato.</button>
+      <button class="mc-option" onclick="checkMC(this,'q73','d')" data-opt="d"><span class="opt-letter">D</span>A depressão pós-parto é normal e não necessita de qualquer intervenção terapêutica.</button>
+    </div>
+    <div class="feedback-box" id="q73-fb"></div>
+  </div>
+</div>
+
+<!-- Q74 TF – Tromboembolismo -->
+<div class="question-card" id="q74">
+  <div class="question-header">
+    <div class="q-number">74</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">O tromboembolismo venoso (trombose venosa profunda e embolia pulmonar) é uma complicação potencialmente grave do pós-parto, sendo o risco aumentado pelo repouso prolongado, pela desidratação e pela hipercoagulabilidade característica do período pós-parto.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q74','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q74','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q74-fb"></div>
+  </div>
+</div>
+
+<!-- Q75 MC – Mastite -->
+<div class="question-card" id="q75">
+  <div class="question-header">
+    <div class="q-number">75</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">A <strong>mastite puerperal</strong> é uma complicação do pós-parto que afeta as mamas. Quais são os seus principais sinais e sintomas?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q75','a')" data-opt="a"><span class="opt-letter">A</span>Diminuição da produção de leite sem qualquer alteração da mama ou do estado geral da puérpera.</button>
+      <button class="mc-option" onclick="checkMC(this,'q75','b')" data-opt="b"><span class="opt-letter">B</span>Inflamação localizada da mama (rubor, calor, tumefação, dor), geralmente associada a febre, mal-estar geral e frequentemente a infeção bacteriana.</button>
+      <button class="mc-option" onclick="checkMC(this,'q75','c')" data-opt="c"><span class="opt-letter">C</span>Apenas congestão mamária bilateral sem dor nem alterações da temperatura.</button>
+      <button class="mc-option" onclick="checkMC(this,'q75','d')" data-opt="d"><span class="opt-letter">D</span>Produção excessiva de leite sem qualquer sintoma inflamatório.</button>
+    </div>
+    <div class="feedback-box" id="q75-fb"></div>
+  </div>
+</div>
+
+<!-- Q76 DEV – Complicações pós-parto -->
+<div class="question-card" id="q76">
+  <div class="question-header">
+    <div class="q-number">76</div>
+    <div>
+      <div class="q-type-badge">📝 Desenvolvimento</div>
+      <div class="question-text">Descreve pelo menos 5 complicações maternas que podem ocorrer no pós-parto, indicando para cada uma os principais sinais e sintomas de alerta.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <textarea class="dev-textarea" placeholder="Escreve a tua resposta aqui..."></textarea>
+    <div class="dev-hint">💡 Dica: Pensa em hemorragia, infeção, trombose, alterações mamárias e alterações psicológicas.</div>
+    <button class="show-answer-btn" onclick="showModelAnswer('q76')">📖 Ver Resposta Modelo</button>
+    <div class="model-answer" id="q76-model">
+      <div class="model-answer-title">📖 Resposta Modelo</div>
+      <div class="model-answer-text">
+        <strong>1. Hemorragia Pós-Parto (HPP):</strong> Perda de sangue superior a 500 ml (parto vaginal) ou 1000 ml (cesariana). Sinais: hemorragia abundante com coágulos, útero mal contraído (atonia uterina), taquicardia, hipotensão, palidez. É a principal causa de mortalidade materna.<br><br>
+        <strong>2. Endometrite / Infeção Puerperal:</strong> Infeção do revestimento uterino. Sinais: febre (≥38°C), dor uterina à palpação, lóquios com odor fétido e aspeto purulento, mal-estar geral.<br><br>
+        <strong>3. Mastite Puerperal:</strong> Inflamação/infeção da mama durante o aleitamento. Sinais: mama quente, vermelha, edemaciada e dolorosa, febre, calafrios, mal-estar. Pode evoluir para abcesso mamário.<br><br>
+        <strong>4. Tromboembolismo Venoso:</strong> Trombose venosa profunda (TVP) ou embolia pulmonar. Sinais de TVP: dor, calor, rubor e edema numa perna. Sinais de embolia: dificuldade respiratória súbita, dor torácica, taquicardia.<br><br>
+        <strong>5. Depressão Pós-Parto:</strong> Perturbação do humor persistente. Sinais: tristeza profunda, choro fácil, ansiedade, dificuldade em cuidar do bebé, pensamentos negativos, insónia, que persistem mais de 2 semanas.<br><br>
+        <strong>6. Infeção da ferida cirúrgica (cesariana/episiotomia):</strong> Sinais: rubor, calor, edema, secreção purulenta e dor na ferida, por vezes acompanhados de febre.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q77 MC – TAS tasks -->
+<div class="question-card" id="q77">
+  <div class="question-header">
+    <div class="q-number">77</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">No âmbito das competências do Técnico/a Auxiliar de Saúde (TAS) nos cuidados à saúde materna, qual das seguintes ações NÃO é da sua responsabilidade?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q77','a')" data-opt="a"><span class="opt-letter">A</span>Apoio à higiene e conforto da grávida/puérpera sob supervisão do enfermeiro.</button>
+      <button class="mc-option" onclick="checkMC(this,'q77','b')" data-opt="b"><span class="opt-letter">B</span>Prescrever analgésicos para a dor pós-parto e indicar o tratamento das complicações.</button>
+      <button class="mc-option" onclick="checkMC(this,'q77','c')" data-opt="c"><span class="opt-letter">C</span>Registo e comunicação de sinais de alerta à equipa de saúde responsável.</button>
+      <button class="mc-option" onclick="checkMC(this,'q77','d')" data-opt="d"><span class="opt-letter">D</span>Apoio emocional à grávida e à puérpera, promovendo um ambiente calmo e seguro.</button>
+    </div>
+    <div class="feedback-box" id="q77-fb"></div>
+  </div>
+</div>
+
+<!-- Q78 TF – TAS e sinais de alerta -->
+<div class="question-card" id="q78">
+  <div class="question-header">
+    <div class="q-number">78</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">O TAS tem um papel fundamental na identificação e comunicação de sinais de alerta à equipa de saúde (febre, hemorragia, alterações dos lóquios, dor intensa), mas não pode tomar decisões clínicas de forma autónoma, devendo sempre reportar ao enfermeiro ou médico responsável.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q78','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q78','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q78-fb"></div>
+  </div>
+</div>
+
+<!-- Q79 MC – TAS competências -->
+<div class="question-card" id="q79">
+  <div class="question-header">
+    <div class="q-number">79</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Qual das seguintes tarefas se enquadra CORRETAMENTE no âmbito de intervenção do TAS nos cuidados à saúde materna?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q79','a')" data-opt="a"><span class="opt-letter">A</span>Realizar o parto em contexto de emergência de forma autónoma, sem supervisão de profissional de saúde.</button>
+      <button class="mc-option" onclick="checkMC(this,'q79','b')" data-opt="b"><span class="opt-letter">B</span>Auxiliar nos cuidados de higiene e conforto à puérpera, apoiar no posicionamento para o aleitamento materno, registar e comunicar alterações observadas e promover um ambiente calmo e seguro, sempre sob supervisão.</button>
+      <button class="mc-option" onclick="checkMC(this,'q79','c')" data-opt="c"><span class="opt-letter">C</span>Interpretar os resultados das análises laboratoriais e recomendar suplementação à grávida de forma autónoma.</button>
+      <button class="mc-option" onclick="checkMC(this,'q79','d')" data-opt="d"><span class="opt-letter">D</span>Realizar exames ginecológicos e ecografias obstétricas de rotina.</button>
+    </div>
+    <div class="feedback-box" id="q79-fb"></div>
+  </div>
+</div>
+
+<!-- Q80 DEV – TAS na saúde materna -->
+<div class="question-card" id="q80">
+  <div class="question-header">
+    <div class="q-number">80</div>
+    <div>
+      <div class="q-type-badge">📝 Desenvolvimento</div>
+      <div class="question-text">Descreve o papel do Técnico/a Auxiliar de Saúde (TAS) nos cuidados à puérpera durante o internamento pós-parto, identificando pelo menos 6 tarefas concretas que se enquadram no âmbito da sua intervenção.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <textarea class="dev-textarea" placeholder="Escreve a tua resposta aqui..."></textarea>
+    <div class="dev-hint">💡 Dica: Pensa nos cuidados de higiene, na mobilização, na observação e registo, no apoio emocional, no aleitamento e na preparação para a alta.</div>
+    <button class="show-answer-btn" onclick="showModelAnswer('q80')">📖 Ver Resposta Modelo</button>
+    <div class="model-answer" id="q80-model">
+      <div class="model-answer-title">📖 Resposta Modelo</div>
+      <div class="model-answer-text">
+        O TAS, no internamento pós-parto, atua sempre em colaboração e sob supervisão da equipa de enfermagem e médica. As suas tarefas concretas incluem:<br><br>
+        <strong>1. Cuidados de higiene e conforto:</strong> Auxiliar a puérpera nos cuidados de higiene pessoal (banho, higiene perineal), especialmente nas primeiras horas após o parto ou cesariana, quando a mobilidade está limitada.<br><br>
+        <strong>2. Apoio à mobilização:</strong> Auxiliar a puérpera a mobilizar-se na cama e a levantar-se pela primeira vez, prevenindo quedas e promovendo a recuperação.<br><br>
+        <strong>3. Observação e registo de sinais de alerta:</strong> Observar e comunicar à equipa qualquer sinal preocupante: hemorragia abundante, lóquios com odor fétido, febre, dor intensa, edema das pernas, alterações da ferida cirúrgica.<br><br>
+        <strong>4. Apoio ao aleitamento materno:</strong> Apoiar no posicionamento correto da puérpera e do recém-nascido para a amamentação, comunicando dificuldades à enfermeira.<br><br>
+        <strong>5. Apoio emocional:</strong> Manter uma presença calma e empática, ouvir as preocupações da puérpera, promover um ambiente tranquilo e de segurança para a nova família.<br><br>
+        <strong>6. Apoio nas refeições:</strong> Assegurar que a puérpera se alimenta e hidrata adequadamente, assistindo-a se necessário.<br><br>
+        <strong>7. Preparação para a alta:</strong> Colaborar na organização do espaço e dos pertences da puérpera, auxiliando na preparação para regressar a casa.<br><br>
+        <strong>8. Cuidados ao recém-nascido:</strong> Auxiliar nos cuidados básicos ao RN (higiene, muda de fralda) sob orientação da enfermeira, assegurando a segurança do bebé.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===========================
+     MÓDULO 4: CONHECIMENTOS GERAIS (Q43-Q48)
+     =========================== -->
+<div class="section-header">
+  <div class="section-icon">🎓</div>
+  <div>
+    <h2>Módulo 5 – Consolidação e Casos Práticos</h2>
+    <p>Escolha Múltipla · Desenvolvimento · Imagens</p>
+  </div>
+</div>
+
+<!-- Q43 MC -->
+<div class="question-card" id="q43">
+  <div class="question-header">
+    <div class="q-number">43</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Uma grávida RhD negativa deve receber imunoglobulina anti-D em que momento(s) da gravidez?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q43','a')" data-opt="a"><span class="opt-letter">A</span>Na 1ª consulta, antes das 12 semanas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q43','b')" data-opt="b"><span class="opt-letter">B</span>Às 28 semanas de gestação (profilaxia da isoimunização RhD).</button>
+      <button class="mc-option" onclick="checkMC(this,'q43','c')" data-opt="c"><span class="opt-letter">C</span>Às 36-38 semanas, juntamente com a pesquisa de estreptococos.</button>
+      <button class="mc-option" onclick="checkMC(this,'q43','d')" data-opt="d"><span class="opt-letter">D</span>Apenas após o parto, se o bebé for RhD positivo.</button>
+    </div>
+    <div class="feedback-box" id="q43-fb"></div>
+  </div>
+</div>
+
+<!-- Q44 TF -->
+<div class="question-card" id="q44">
+  <div class="question-header">
+    <div class="q-number">44</div>
+    <div>
+      <div class="q-type-badge">✅ Verdadeiro ou Falso</div>
+      <div class="question-text">A gravidez deve ser entendida como uma oportunidade de intervenção para modificar hábitos e comportamentos, nomeadamente hábitos alimentares, exercício físico, cessação tabágica e consumo de substâncias psicoativas.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="tf-options">
+      <button class="tf-btn" onclick="checkTF(this,'q44','true')">👍 Verdadeiro</button>
+      <button class="tf-btn" onclick="checkTF(this,'q44','false')">👎 Falso</button>
+    </div>
+    <div class="feedback-box" id="q44-fb"></div>
+  </div>
+</div>
+
+<!-- Q45 MC -->
+<div class="question-card" id="q45">
+  <div class="question-header">
+    <div class="q-number">45</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">A diabetes gestacional é rastreada durante a gravidez. Que exame é utilizado para o seu diagnóstico universal?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q45','a')" data-opt="a"><span class="opt-letter">A</span>Hemoglobina glicada (HbA1c).</button>
+      <button class="mc-option" onclick="checkMC(this,'q45','b')" data-opt="b"><span class="opt-letter">B</span>Glicemia em jejum na 1ª consulta.</button>
+      <button class="mc-option" onclick="checkMC(this,'q45','c')" data-opt="c"><span class="opt-letter">C</span>Prova de Tolerância Oral à Glicose (PTOG) com 75g.</button>
+      <button class="mc-option" onclick="checkMC(this,'q45','d')" data-opt="d"><span class="opt-letter">D</span>Análise sumária de urina com fita-teste.</button>
+    </div>
+    <div class="feedback-box" id="q45-fb"></div>
+  </div>
+</div>
+
+<!-- Q46 IMAGE - DNA/Genetics -->
+<div class="question-card" id="q46">
+  <div class="question-header">
+    <div class="q-number">46</div>
+    <div>
+      <div class="q-type-badge">🖼️ Questão com Imagem</div>
+      <div class="question-text">Observa o esquema da informação genética e identifica a relação hierárquica correta entre os três conceitos: DNA, Gene e Cromossoma.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="dna-visual">
+      <div style="font-size:0.8rem;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🧬 Hierarquia da Informação Genética</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="background:#16a34a;color:white;padding:10px 24px;border-radius:10px;font-weight:800;font-size:0.9rem;width:200px;text-align:center;">🧬 CROMOSSOMA</div>
+        <div style="color:#16a34a;font-size:0.9rem;">▼</div>
+        <div style="background:#0ea5e9;color:white;padding:10px 24px;border-radius:10px;font-weight:800;font-size:0.9rem;width:200px;text-align:center;">🔵 GENES</div>
+        <div style="color:#0ea5e9;font-size:0.9rem;">▼</div>
+        <div style="background:#7c3aed;color:white;padding:10px 24px;border-radius:10px;font-weight:800;font-size:0.9rem;width:200px;text-align:center;">🔮 DNA</div>
+      </div>
+      <div style="font-size:0.75rem;color:#166534;margin-top:12px;font-weight:700;">Humanos: 46 cromossomas (23 pares) · Genoma humano: ~120 000 genes</div>
+    </div>
+    <div style="font-size:0.9rem;font-weight:700;margin-top:12px;color:var(--navy);">Com base no esquema, qual afirmação está CORRETA?</div>
+    <div class="mc-options" style="margin-top:10px;">
+      <button class="mc-option" onclick="checkMC(this,'q46','a')" data-opt="a"><span class="opt-letter">A</span>O DNA é a estrutura maior que contém os cromossomas, que por sua vez contêm genes.</button>
+      <button class="mc-option" onclick="checkMC(this,'q46','b')" data-opt="b"><span class="opt-letter">B</span>Os genes são a unidade maior e os cromossomas são segmentos dos genes.</button>
+      <button class="mc-option" onclick="checkMC(this,'q46','c')" data-opt="c"><span class="opt-letter">C</span>O DNA contém genes, e os genes estão organizados em cromossomas. Os cromossomas são estruturas maiores que organizam e contêm muitos genes formados por DNA.</button>
+      <button class="mc-option" onclick="checkMC(this,'q46','d')" data-opt="d"><span class="opt-letter">D</span>Cromossoma = Gene = DNA são sinónimos de designações diferentes para a mesma molécula.</button>
+    </div>
+    <div class="feedback-box" id="q46-fb"></div>
+  </div>
+</div>
+
+<!-- Q47 DEVELOPMENT - TAS role -->
+<div class="question-card" id="q47">
+  <div class="question-header">
+    <div class="q-number">47</div>
+    <div>
+      <div class="q-type-badge">📝 Desenvolvimento</div>
+      <div class="question-text">Como futuro/a Técnico/a Auxiliar de Saúde (TAS), quais são as tuas responsabilidades e competências no âmbito dos cuidados na saúde materna? Descreve pelo menos 4 tarefas que se enquadram no âmbito de intervenção do TAS nesta área.</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <textarea class="dev-textarea" placeholder="Escreve a tua resposta aqui..."></textarea>
+    <div class="dev-hint">💡 Dica: Pensa no apoio à grávida, à puérpera, na vigilância de sinais, no apoio às consultas e nos cuidados básicos.</div>
+    <button class="show-answer-btn" onclick="showModelAnswer('q47')">📖 Ver Resposta Modelo</button>
+    <div class="model-answer" id="q47-model">
+      <div class="model-answer-title">📖 Resposta Modelo</div>
+      <div class="model-answer-text">
+        O TAS, no âmbito dos cuidados na saúde materna, tem um papel de suporte e colaboração com a equipa de saúde. As suas principais competências incluem:<br><br>
+        <strong>1. Apoio às consultas de vigilância pré-natal:</strong> Acolhimento da grávida, preparação do ambiente de consulta, auxílio no registo de dados básicos (peso, tensão arterial, etc.), sempre sob supervisão do profissional de saúde responsável.<br><br>
+        <strong>2. Educação para a saúde:</strong> Transmissão de informação básica sobre estilos de vida saudáveis na gravidez (alimentação, repouso, higiene), reforçando as orientações dadas pelos profissionais de saúde.<br><br>
+        <strong>3. Apoio à puérpera:</strong> Auxílio nos cuidados de higiene e conforto após o parto, apoio emocional, vigilância de sinais de alerta (ex: características dos lóquios, sinais de infeção).<br><br>
+        <strong>4. Apoio ao aleitamento materno:</strong> Apoio e incentivo à amamentação, orientação sobre posicionamento correto, sempre em colaboração com a enfermagem.<br><br>
+        <strong>5. Vigilância de sinais de alerta:</strong> Identificação e comunicação imediata de sinais preocupantes à equipa de saúde (febre, hemorragia, dor intensa, alterações dos lóquios).<br><br>
+        <strong>6. Registo e atualização de documentação:</strong> Colaboração no preenchimento e atualização do Boletim de Saúde da Grávida e outros documentos, sempre dentro das suas competências.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q48 MC Final -->
+<div class="question-card" id="q48">
+  <div class="question-header">
+    <div class="q-number">48</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Na avaliação materna realizada em cada consulta de vigilância pré-natal, quais são os parâmetros que devem ser sistematicamente avaliados?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q48','a')" data-opt="a"><span class="opt-letter">A</span>Apenas a frequência cardíaca fetal e os movimentos fetais.</button>
+      <button class="mc-option" onclick="checkMC(this,'q48','b')" data-opt="b"><span class="opt-letter">B</span>Sintomas que possam afetar mãe e feto, pressão arterial, peso atual e variação ponderal, e análise sumária de urina (proteinúria).</button>
+      <button class="mc-option" onclick="checkMC(this,'q48','c')" data-opt="c"><span class="opt-letter">C</span>Hemograma completo e glicemia em jejum em todas as consultas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q48','d')" data-opt="d"><span class="opt-letter">D</span>Cardiotocografia (CTG) e ecografia em todas as consultas de vigilância.</button>
+    </div>
+    <div class="feedback-box" id="q48-fb"></div>
+  </div>
+</div>
+
+<!-- SUBMIT ALL -->
+<div class="submit-all-wrap">
+  <button class="submit-all-btn" onclick="showFinalResults()">
+    🏁 Ver Resultados Finais e Nota
+  </button>
+</div>
+
+<!-- RESULTS SECTION -->
+<div id="results-section">
+  <div class="results-trophy" id="results-trophy">🏆</div>
+  <div class="results-title">Resultado Final</div>
+  <div class="results-grade" id="results-grade">0</div>
+  <div class="results-subtitle" id="results-subtitle">valores</div>
+  <div class="results-stats">
+    <div class="rstat correct">
+      <span class="rstat-num" id="res-correct">0</span>
+      <span class="rstat-label">Respostas Certas</span>
+    </div>
+    <div class="rstat wrong">
+      <span class="rstat-num" id="res-wrong">0</span>
+      <span class="rstat-label">Respostas Erradas</span>
+    </div>
+    <div class="rstat">
+      <span class="rstat-num" id="res-total">0</span>
+      <span class="rstat-label">Total Questões</span>
+    </div>
+    <div class="rstat">
+      <span class="rstat-num" id="res-pct">0%</span>
+      <span class="rstat-label">Percentagem</span>
+    </div>
+  </div>
+  <div class="result-message" id="result-message"></div>
+  <div style="font-size:0.85rem;color:#6b7280;font-weight:600;margin-bottom:16px;">Nota: As questões de desenvolvimento não são contabilizadas automaticamente na nota final.</div>
+  <button class="restart-btn" onclick="restartQuiz()">🔄 Recomeçar o Quiz</button>
+</div>
+
+</main>
+
+<script>
+// =====================
+// STATE
+// =====================
+const answers = {
+  // TF questions: 'true' or 'false'
+  q1: 'true', q2: 'true', q3: 'false', q4: 'false',
+  q8: 'true', q11: 'true', q14: 'true', q17: 'true',
+  q19: 'false', q22: 'true', q25: 'true', q27: 'true',
+  q30: 'true', q31: 'b',
+  q33: 'false', q36: 'true', q38: 'true', q42: 'true',
+  q44: 'true',
+  // New TF – Módulo 3B
+  q51: 'true', q54: 'true', q57: 'false', q60: 'true',
+  q63: 'true', q66: 'true', q69: 'false', q72: 'true',
+  q74: 'true', q78: 'true',
+  // MC questions: correct option letter
+  q5: 'b', q6: 'b', q7: 'b', q9: 'b', q10: 'c',
+  q12: 'b', q13: 'b', q15: 'c', q18: 'd',
+  q20: 'c', q21: 'b', q23: 'a', q24: 'b', q26: 'b',
+  q28: 'b', q29: 'b', q34: 'b', q35: 'b',
+  q37: 'b', q39: 'b', q40: 'c', q43: 'b', q45: 'c',
+  q46: 'c', q48: 'b',
+  // New MC – Módulo 3B
+  q50: 'b', q52: 'b', q53: 'c', q55: 'b',
+  q56: 'b', q59: 'b', q61: 'b',
+  q64: 'b',
+  q65: 'b', q67: 'b', q68: 'b', q71: 'b', q73: 'b',
+  q75: 'b', q77: 'b', q79: 'b',
+};
+
+const explanations = {
+  q1: { correct: "✅ Correto! A hereditariedade é exatamente esse processo – a transmissão de características genéticas de geração em geração, incluindo traços físicos como a cor dos olhos e predisposições a certas doenças.", wrong: "❌ Incorreto! A afirmação é verdadeira: a hereditariedade é precisamente o processo pelo qual as características genéticas são transmitidas de geração em geração através dos genes, incluindo traços físicos e predisposições a doenças." },
+  q2: { correct: "✅ Correto! A reprodução sexuada humana resulta da fecundação (união do óvulo com o espermatozoide), dando origem a um novo ser com características dos dois progenitores.", wrong: "❌ Incorreto! A afirmação é verdadeira: na reprodução sexuada, a fecundação do óvulo (produzido pela fêmea) pelo espermatozoide (produzido pelo macho) origina um novo ser semelhante a ambos os progenitores." },
+  q3: { correct: "✅ Correto! Os seres humanos possuem 46 cromossomas em cada célula, organizados em 23 pares. Metade vem da mãe e metade do pai.", wrong: "❌ Falso! Os seres humanos possuem 46 cromossomas em cada célula, organizados em 23 pares (e não 23 cromossomas em 46 pares). Metade vem da mãe e metade do pai." },
+  q4: { correct: "✅ Correto! A mitose origina células-filhas geneticamente idênticas. É a meiose que produz gametas com metade do número de cromossomas.", wrong: "❌ Falso! Quem produz gametas (óvulos e espermatozoides) com metade do número de cromossomas é a MEIOSE. A mitose gera duas células-filhas geneticamente idênticas à célula-mãe, sendo responsável pelo crescimento e reparação dos tecidos." },
+  q5: { correct: "✅ Correto! O genoma é o conjunto completo de todos os genes de um organismo. O genoma humano tem aproximadamente 120 000 genes. Atenção: DNA é a molécula, genes são segmentos do DNA e cromossomas são as estruturas que organizam os genes.", wrong: "❌ Incorreto! O genoma é o conjunto de TODOS os genes de um organismo. O genoma humano tem cerca de 120 000 genes." },
+  q6: { correct: "✅ Correto! O sexo do bebé é determinado pelo cromossoma sexual do espermatozoide. Se for X → bebé menina (XX); se for Y → bebé menino (XY). A mãe contribui sempre com um cromossoma X.", wrong: "❌ Incorreto! O sexo é determinado pelo cromossoma sexual do espermatozoide (X ou Y). O óvulo da mãe contribui sempre com X." },
+  q7: { correct: "✅ Correto! As Trompas de Falópio (também chamadas tubas uterinas) são canais tubulares que ligam os ovários ao útero e são o local habitual onde ocorre a fecundação do óvulo pelo espermatozoide.", wrong: "❌ Incorreto! As Trompas de Falópio ligam os ovários ao útero e é nelas que ocorre normalmente a fecundação." },
+  q8: { correct: "✅ Correto! Durante o período fértil da mulher, os ovários libertam um ovócito II a cada ±28 dias. Este ovócito só completa o processo de oogénese (formando o óvulo) se for fecundado.", wrong: "❌ Incorreto! A afirmação é verdadeira: os ovários libertam um ovócito II a cada ±28 dias, e esse ovócito só termina a oogénese (completando a sua maturação) se for fecundado por um espermatozoide." },
+  q9: { correct: "✅ Correto! O ciclo ovárico segue a sequência: 1ª Fase Folicular (crescimento folicular), 2ª Fase Ovulatória (libertação do óvulo, ±dia 14) e 3ª Fase Lútea (formação do corpo amarelo).", wrong: "❌ Incorreto! A sequência correta é: Fase Folicular → Fase Ovulatória → Fase Lútea. A ovulação ocorre aproximadamente a meio do ciclo (±dia 14)." },
+  q10: { correct: "✅ Correto! A fecundação ocorre normalmente nas Trompas de Falópio, onde o espermatozoide encontra o óvulo após a ovulação.", wrong: "❌ Incorreto! A fecundação ocorre nas Trompas de Falópio (tubas uterinas), não no útero nem na vagina." },
+  q11: { correct: "✅ Correto! Após a penetração de um espermatozoide, ocorre imediatamente um bloqueio que impede a poliespermia. Com a fusão dos núcleos forma-se o ovo/zigoto, primeira célula do novo ser.", wrong: "❌ Incorreto! A afirmação é verdadeira: após a penetração do espermatozoide, ocorre um bloqueio imediato que impede a entrada de outros espermatozoides (bloqueio da poliespermia), e a fusão dos dois núcleos origina o zigoto." },
+  q12: { correct: "✅ Correto! Na segunda fase (que corresponde ao primeiro trimestre, quando todos os órgãos se formam), o produto da fertilização é designado EMBRIÃO. Na 1ª fase é ovo/zigoto e na 3ª fase (fase fetal) é feto.", wrong: "❌ Incorreto! Na segunda fase, o produto da fertilização designa-se EMBRIÃO. É nesta fase que todos os órgãos se começam a formar." },
+  q13: { correct: "✅ Correto! No final do 2º mês (8ª semana), quando o embrião mede 3 a 4 cm e pesa 2 a 3 gramas, considera-se que está completamente formado e passa a designar-se FETO.", wrong: "❌ Incorreto! O embrião passa a ser denominado feto no final do 2º mês (±8ª semana), quando mede 3-4 cm e pesa 2-3 gramas." },
+  q14: { correct: "✅ Correto! A vérnix caseosa é uma substância protetora que começa a revestir a pele do feto a partir do 6º mês, protegendo-o do contacto contínuo com o líquido amniótico.", wrong: "❌ Incorreto! A afirmação é verdadeira: a vérnix caseosa é uma camada protetora que começa a revestir a pele do feto a partir do 6º mês de gestação, protegendo-a da exposição contínua ao líquido amniótico." },
+  q15: { correct: "✅ Correto! O saco amniótico (bolsa das águas) é uma bolsa cheia de líquido amniótico que envolve o embrião/feto, protegendo-o de choques mecânicos e traumatismos externos.", wrong: "❌ Incorreto! O saco amniótico contém o embrião em líquido amniótico, protegendo-o de choques. A placenta é o órgão responsável pela oxigenação e nutrição; o cordão umbilical liga o embrião à placenta." },
+  q17: { correct: "✅ Correto! O aparelho genital masculino é constituído exatamente por esses órgãos: testículos (gónadas), canais deferentes, vesículas seminais, próstata, uretra e pénis.", wrong: "❌ Incorreto! A afirmação é verdadeira: o aparelho genital masculino é constituído pelos testículos, canais deferentes, vesículas seminais, próstata, uretra e pénis." },
+  q18: { correct: "✅ Correto! O líquido amniótico é produzido pelo saco amniótico e faz parte do sistema de proteção do feto – não tem qualquer relação com o sémen. O sémen é constituído por espermatozoides, líquido seminal, líquido prostático e outras secreções.", wrong: "❌ Incorreto! O líquido amniótico é produzido pelo saco amniótico e não faz parte da composição do sémen. O sémen é composto por espermatozoides, líquido seminal e líquido prostático." },
+  q19: { correct: "✅ Correto! A gravidez não é um estado de doença — respondeste bem ao identificar que a afirmação é falsa. A gravidez é um processo fisiológico normal que requer vigilância, mas não tratamento médico intensivo.", wrong: "❌ Falso! A gravidez é um processo FISIOLÓGICO normal – não é um estado de doença que necessita de tratamento. É uma adaptação do organismo que requer vigilância e acompanhamento, mas não tratamento médico intensivo." },
+  q20: { correct: "✅ Correto! Os sinais de CERTEZA são objetivos e confirmam inequivocamente a gravidez: batimentos cardíacos fetais detetados, movimentos fetais percetíveis e confirmação ecográfica ou laboratorial (β-HCG positivo).", wrong: "❌ Incorreto! As náuseas e amenorreia são sinais de PRESUNÇÃO; o Sinal de Chadwick é de PROBABILIDADE. Os sinais de CERTEZA são: batimentos cardíacos fetais, movimentos fetais e diagnóstico ecográfico/analítico." },
+  q21: { correct: "✅ Correto! O Sinal de Chadwick consiste na tonalidade púrpura/azulada da vagina e do colo do útero, resultante do aumento da vascularização. É um sinal de probabilidade de gravidez.", wrong: "❌ Incorreto! O Sinal de Chadwick é a tonalidade púrpura (azulada) da vagina e colo do útero, resultado do maior afluxo de sangue a essas estruturas durante a gravidez." },
+  q22: { correct: "✅ Correto! A gravidez tem a duração de aproximadamente 40 semanas, contadas a partir do 1º dia da última menstruação, correspondendo ao período entre a conceção e o trabalho de parto.", wrong: "❌ Incorreto! A afirmação é verdadeira: a duração normal de uma gravidez é de aproximadamente 40 semanas, contadas a partir do 1º dia da última menstruação." },
+  q23: { correct: "✅ Correto! Sinais de PRESUNÇÃO: náuseas, amenorreia, congestão mamária (sintomas subjetivos). Sinal de PROBABILIDADE: Sinal de Chadwick (tonalidade púrpura). Sinais de CERTEZA: batimentos cardíacos fetais e β-HCG positivo.", wrong: "❌ Incorreto! A classificação correta é: náuseas/amenorreia/congestão = Presunção; Sinal Chadwick = Probabilidade; batimentos cardíacos e β-HCG = Certeza." },
+  q24: { correct: "✅ Correto! Recomenda-se a realização de 10 consultas durante a gravidez de baixo risco: a 1ª antes das 12 semanas, e as restantes às 16, 22, 28, 32, 35, 37, 39, 40 e 41 semanas.", wrong: "❌ Incorreto! Recomenda-se 10 consultas no total, sendo a 1ª antes das 12 semanas." },
+  q25: { correct: "✅ Correto! O ácido fólico (400 µg/dia) deve ser iniciado na preconceção (antes de engravidar) e mantido até às 12 semanas de gestação, pois é fundamental para o correto desenvolvimento do tubo neural do bebé.", wrong: "❌ Incorreto! A afirmação é verdadeira: todas as grávidas devem ser suplementadas com ácido fólico (400 µg/dia) na preconceção e até às 12 semanas de gestação, para prevenir defeitos do tubo neural." },
+  q26: { correct: "✅ Correto! A ecografia do 2º trimestre (20-22 semanas) é considerada a mais importante para o diagnóstico de malformações fetais, permitindo também a avaliação do crescimento, marcadores cromossómicos, localização da placenta, confirmação do sexo e avaliação do colo do útero.", wrong: "❌ Incorreto! A ecografia das 20-22 semanas é a mais importante para o DIAGNÓSTICO DE MALFORMAÇÕES. A datação/translucência da nuca é na 1ª ecografia; o crescimento tardio avalia-se na 3ª ecografia." },
+  q27: { correct: "✅ Correto! O BSG é um documento fundamental para a vigilância da saúde materna e fetal. É preenchido na 1ª consulta, atualizado em cada consulta subsequente, após o parto, e a puérpera deve apresentá-lo na consulta do puerpério.", wrong: "❌ Incorreto! A afirmação é verdadeira: o Boletim de Saúde da Grávida deve ser preenchido na 1ª consulta, mantido permanentemente atualizado e apresentado também na consulta do puerpério." },
+  q28: { correct: "✅ Correto! Os rastreios infecciosos recomendados durante a gravidez são: bacteriúria assintomática, rubéola, sífilis (VDRL), toxoplasmose, VIH 1 e 2, hepatite B e estreptococos do grupo B. Não se recomenda citomegalovírus, hepatite C nem clamídia.", wrong: "❌ Incorreto! Os rastreios NÃO recomendados são o citomegalovírus, a hepatite C e a clamídia. Os recomendados incluem rubéola, sífilis, VIH, hepatite B, toxoplasmose e estreptococos grupo B." },
+  q29: { correct: "✅ Correto! O parto de TERMO ocorre entre as 37 e as 41 semanas + 6 dias. Antes das 37 semanas é parto pré-termo. A interrupção da gravidez até às 22 semanas é considerado aborto.", wrong: "❌ Incorreto! Parto de TERMO: 37 a 41 semanas + 6 dias. Parto pré-TERMO: antes das 37 semanas. Aborto: interrupção até às 22 semanas." },
+  q30: { correct: "✅ Correto! O aumento de peso na gravidez é natural e necessário, sendo composto pelo crescimento do bebé, placenta, líquido amniótico, aumento do útero, volume sanguíneo, tecido mamário e gordura de reserva. Um ganho insuficiente está de facto associado a maior risco de atraso de crescimento intra-uterino.", wrong: "❌ Incorreto! A afirmação é verdadeira: o aumento de peso na gravidez é fisiológico e resulta de vários componentes (bebé, placenta, líquido amniótico, útero, sangue, mamas, gordura). Um ganho inadequado aumenta o risco de atraso de crescimento intra-uterino." },
+  q31: { correct: "✅ Correto! A ecografia do 1º trimestre realiza-se entre as 11-13 semanas + 6 dias e permite: confirmar a datação da gravidez, avaliar marcadores de aneuploidia (translucência da nuca), diagnosticar malformações major e confirmar o número de fetos.", wrong: "❌ Incorreto! A ecografia do 1º trimestre realiza-se entre as 11-13 semanas (não às 8-10, nem às 20-22). A sua principal vantagem é a datação precisa, avaliação da translucência da nuca e diagnóstico de malformações major. A ecografia das 20-22 semanas é a do 2º trimestre." },
+  q33: { correct: "✅ Correto! A suplementação com ferro não se faz por rotina em todas as grávidas. Apenas se administra em caso de anemia (hemoglobina < 11 g/dl). O que se administra a todas as grávidas é o ácido fólico.", wrong: "❌ Falso! A suplementação com ferro NÃO deve ser feita por rotina em todas as grávidas. Apenas se administra a grávidas com hemoglobina inferior a 11 g/dl. O ácido fólico (400µg/dia) é que se administra a todas as grávidas." },
+  q34: { correct: "✅ Correto! As análises do 1º trimestre (até às 14 semanas) incluem: hemograma, glicemia em jejum, grupo sanguíneo/fator Rh, pesquisa de aglutininas irregulares, serologia (toxoplasmose, rubéola, VDRL, VIH, hepatite B), exame bacteriológico de urina e rastreio de hemoglobinopatias.", wrong: "❌ Incorreto! A PTOG e a pesquisa de estreptococos são exames do 2º e 3º trimestres respetivamente. No 1º trimestre fazem-se hemograma, serologias, grupo/Rh, bacteriúria e hemoglobinopatias." },
+  q35: { correct: "✅ Correto! Para uma grávida com IMC normoponderal (18,5-24,9 kg/m²), o ganho de peso recomendado é de 11,5 a 16 kg, com um aumento semanal de aproximadamente 0,4 kg no 2º e 3º trimestres.", wrong: "❌ Incorreto! Para IMC normoponderal (18,5-24,9), o ganho recomendado é de 11,5 a 16 kg. 12,5-18 kg é para baixo peso; 7-11,5 kg para excesso de peso; 5-9 kg para obesidade." },
+  q36: { correct: "✅ Correto! São alterações fisiológicas normais da gravidez ao nível da pélvis: o aumento do fluxo vaginal (leucorreia), o aumento do risco de infeções urinárias e a diminuição do tónus vesical com aumento da urgência urinária/polaquiúria.", wrong: "❌ Incorreto! A afirmação é verdadeira: o aumento do fluxo vaginal (leucorreia) e o maior risco de infeções urinárias são alterações fisiológicas normais da gravidez, resultantes das modificações hormonais e circulatórias ao nível da pélvis." },
+  q37: { correct: "✅ Correto! A acentuação da curvatura lombar durante a gravidez causa dorsalgias (dores nas costas), sendo uma das alterações corporais mais comuns associadas ao dorso, resultado do deslocamento do centro de gravidade.", wrong: "❌ Incorreto! A alteração do dorso é a acentuação da curvatura lombar (hiperlordose), que causa dorsalgias. As restantes opções correspondem a alterações das extremidades e da pélvis." },
+  q38: { correct: "✅ Correto! A idade gestacional definitiva é estabelecida pelo CCC (comprimento crânio-caudal) na ecografia das 11-13 semanas + 6 dias. Uma vez definida desta forma, não se altera ao longo de toda a gravidez.", wrong: "❌ Incorreto! A afirmação é verdadeira: a idade gestacional definitiva é definida pelo comprimento crânio-caudal na ecografia das 11-13 semanas + 6 dias, e mantém-se inalterável ao longo de toda a gravidez." },
+  q39: { correct: "✅ Correto! O rastreio combinado (translucência da nuca + bioquímica sérica) é o mais recomendado. Se a grávida chegar após as 14 semanas, opta-se pelo rastreio bioquímico do 2º trimestre (teste quádruplo). O rastreio deve ser oferecido a todas as grávidas.", wrong: "❌ Incorreto! O rastreio de síndrome de Down deve ser oferecido a TODAS as grávidas. O rastreio combinado é o preferencial; após as 14 semanas usa-se o teste quádruplo do 2º trimestre." },
+  q40: { correct: "✅ Correto! Recomendações de destinos de viagem para o pós-parto não fazem parte da informação pré-natal recomendada. Os temas incluídos são: fisiologia da gravidez, alimentação, estilos de vida, prevenção de infeções, amamentação, parto e cuidados ao recém-nascido.", wrong: "❌ Incorreto! Recomendações de viagens NÃO fazem parte da informação pré-natal padronizada. Os temas corretos incluem estilos de vida, alimentação, amamentação, prevenção de toxoplasmose e cuidados ao recém-nascido." },
+  q42: { correct: "✅ Correto! A pesquisa de estreptococos beta hemolítico do grupo B realiza-se entre as 35-37 semanas, através de colheita do 1/3 externo da vagina e ano-retal.", wrong: "❌ Incorreto! A afirmação é verdadeira: a pesquisa de estreptococos do grupo B deve ser realizada entre as 35-37 semanas, com colheita do 1/3 externo da vagina e da região ano-retal." },
+  q43: { correct: "✅ Correto! A profilaxia da isoimunização RhD realiza-se às 28 semanas em grávidas RhD negativas. Deve ponderar-se não administrar se o cônjuge for também RhD negativo.", wrong: "❌ Incorreto! A imunoglobulina anti-D para profilaxia administra-se às 28 semanas (profilaxia da isoimunização RhD), não apenas após o parto." },
+  q44: { correct: "✅ Correto! A gravidez é considerada uma excelente oportunidade de intervenção para modificar hábitos de saúde, pois a grávida está mais recetiva a mudanças comportamentais que beneficiem a ela própria e ao bebé.", wrong: "❌ Incorreto! A afirmação é verdadeira: a gravidez é de facto uma janela de oportunidade privilegiada para promover mudanças de comportamento, dado que a grávida está geralmente mais motivada e recetiva a cuidar da sua saúde e do bebé." },
+  q45: { correct: "✅ Correto! O diagnóstico universal de diabetes gestacional faz-se através da Prova de Tolerância Oral à Glicose (PTOG) com 75g, com colheitas aos 0, 60 e 120 minutos. Realiza-se habitualmente entre as 24-28 semanas.", wrong: "❌ Incorreto! O exame de rastreio universal da diabetes gestacional é a PTOG com 75g (com colheitas às 0h, 1h e 2h). A glicemia em jejum é apenas o rastreio inicial do 1º trimestre." },
+  q46: { correct: "✅ Correto! O DNA é a molécula base que forma a dupla hélice; os genes são segmentos específicos do DNA que codificam proteínas; os cromossomas são as estruturas maiores (no núcleo) que organizam e contêm muitos genes. É uma hierarquia de inclusão: DNA → genes → cromossomas.", wrong: "❌ Incorreto! A hierarquia correta é: o DNA é a molécula base; os genes são segmentos de DNA; os cromossomas são estruturas que organizam muitos genes feitos de DNA." },
+  q48: { correct: "✅ Correto! Em cada consulta de vigilância, deve avaliar-se a mãe através de: sintomas que possam afetar mãe e feto, pressão arterial (braço direito, sentada), peso atual e variação ponderal, e análise sumária de urina com fita-teste (proteinúria).", wrong: "❌ Incorreto! Em cada consulta avaliam-se: sintomas maternos/fetais, pressão arterial, peso e variação ponderal, e análise sumária de urina. O hemograma e a CTG têm indicações específicas, não são feitos em todas as consultas." },
+  // Módulo 3B – Sistema Reprodutor Masculino
+  q49: { correct: "✅ Questão de legenda – ver respostas no diagrama.", wrong: "❌ Questão de legenda – as respostas corretas são indicadas a verde por baixo de cada campo após a verificação." },
+  q50: { correct: "✅ Correto! A próstata produz o líquido prostático, que é alcalino. Esta alcalinidade protege os espermatozoides da acidez da uretra e da vagina, permitindo a sua sobrevivência e mobilidade durante o percurso até ao óvulo.", wrong: "❌ Incorreto! A função da próstata é produzir líquido prostático alcalino que protege os espermatozoides da acidez. Os testículos produzem espermatozoides e testosterona; os epidídimos armazenam e maturam os espermatozoides." },
+  // Módulo 3B – Fisiologia do Parto
+  q51: { correct: "✅ Correto! O trabalho de parto divide-se em 3 estadios: 1º - Dilatação (do início das contrações até à dilatação completa do colo); 2º - Expulsão (do feto); 3º - Dequitadura (expulsão da placenta e membranas).", wrong: "❌ Incorreto! A afirmação é verdadeira: o trabalho de parto divide-se em três estadios — 1º dilatação, 2º expulsão do feto e 3º dequitadura (expulsão da placenta e membranas)." },
+  q52: { correct: "✅ Correto! O 1º estadio (fase de dilatação) termina quando o colo do útero atinge a dilatação completa de 10 cm, permitindo que o bebé passe para o canal de parto.", wrong: "❌ Incorreto! O 1º estadio termina com a dilatação completa do colo uterino (10 cm). A expulsão do bebé é o 2º estadio e a expulsão da placenta é o 3º estadio (dequitadura)." },
+  q53: { correct: "✅ Correto! A dequitadura é o 3º e último estadio do trabalho de parto, correspondendo à expulsão da placenta e das membranas amnióticas após o nascimento do bebé. Normalmente ocorre entre 5 a 30 minutos após o parto.", wrong: "❌ Incorreto! A dequitadura é o 3º estadio do trabalho de parto – a expulsão da placenta e membranas após o nascimento. Não é a dilatação do colo (1º estadio) nem a rotura de membranas." },
+  q54: { correct: "✅ Correto! O parto eutócico é o parto normal/vaginal, sem necessidade de instrumentação (fórceps, ventosa) nem cirurgia (cesariana). O bebé nasce pela via vaginal, habitualmente em apresentação cefálica (cabeça).", wrong: "❌ Incorreto! A afirmação é verdadeira: o parto eutócico é o parto normal e espontâneo por via vaginal, sem necessidade de qualquer instrumentação ou intervenção cirúrgica." },
+  // Módulo 3B – Tipos de Parto
+  q55: { correct: "✅ Correto! O parto distócico é aquele que apresenta dificuldades e requer intervenção médica para auxiliar ou substituir o parto vaginal espontâneo, podendo recorrer-se a instrumentação (fórceps, ventosa) ou a cirurgia (cesariana).", wrong: "❌ Incorreto! A cesariana não é sempre a opção mais segura – tem as suas próprias complicações. O fórceps e a ventosa são usados em partos vaginais assistidos, não em cesarianas. Parto pré-termo ocorre ANTES das 37 semanas. O parto distócico é o que requer intervenção médica." },
+  q56: { correct: "✅ Correto! A cesariana tem indicações precisas: apresentação pélvica (nádegas/pés), sofrimento fetal, placenta prévia (occlui o colo), desproporção feto-pélvica (bebé grande ou bacia estreita), entre outras situações de risco.", wrong: "❌ Incorreto! A cesariana tem indicações específicas. Apresentação cefálica com boa progressão, trabalho de parto normal e rotura de membranas sem complicações são situações favoráveis ao parto vaginal, não indicações para cesariana." },
+  q57: { correct: "✅ Correto! A episiotomia NÃO é recomendada de rotina. As recomendações atuais indicam a sua realização apenas quando clinicamente necessário, tendo sido abandonada a prática rotineira.", wrong: "❌ Falso! A episiotomia NÃO é recomendada de rotina em todos os partos vaginais. As recomendações atuais (OMS e DGS) indicam a sua realização apenas quando necessário (ex: sofrimento fetal iminente, parto instrumentado). A prática rotineira foi abandonada." },
+  // Módulo 3B – Ambiente e Emoções
+  q59: { correct: "✅ Correto! O ambiente durante o trabalho de parto tem impacto real na sua progressão. Um ambiente calmo, com privacidade, boa iluminação, temperatura adequada e suporte emocional contínuo (doula, acompanhante de confiança) reduz o stress, favorece a libertação de ocitocina e contribui para uma melhor experiência.", wrong: "❌ Incorreto! O ambiente INFLUENCIA significativamente o trabalho de parto. O medo e a ansiedade aumentam a adrenalina, que pode inibir as contrações. A presença de acompanhante é um direito da parturiente consagrado na lei portuguesa." },
+  q60: { correct: "✅ Correto! A analgesia epidural (peridural) é a técnica farmacológica mais utilizada para o alívio da dor no trabalho de parto. Consiste na administração de anestésico local no espaço epidural, sendo administrada por um médico anestesiologista.", wrong: "❌ Incorreto! A afirmação é verdadeira: a analgesia epidural é de facto a técnica farmacológica mais utilizada e eficaz no alívio da dor do trabalho de parto, administrada por um médico anestesiologista no espaço epidural." },
+  q61: { correct: "✅ Correto! O plano de parto é um documento elaborado pela grávida/casal para comunicar as suas preferências à equipa de saúde: tipo de analgesia, posição no parto, presença de acompanhante, contacto pele-a-pele imediato, corte do cordão, etc. Não é vinculativo e pode ser adaptado conforme as necessidades clínicas.", wrong: "❌ Incorreto! O plano de parto é elaborado pela grávida/casal (não pela equipa médica), não é obrigatório por lei, e não garante que o parto decorra exatamente como planeado, pois pode ser necessário adaptá-lo por razões clínicas." },
+  // Módulo 3B – Imagem sistema reprodutor feminino
+  q62: { correct: "✅ Questão de legenda – ver respostas no diagrama.", wrong: "❌ Questão de legenda – as respostas corretas são indicadas a verde por baixo de cada campo após a verificação." },
+  // Módulo 3B – Puerpério e Cuidados à Puérpera
+  q63: { correct: "✅ Correto! O puerpério inicia-se logo após a expulsão da placenta e dura habitualmente 6 a 8 semanas. Durante este período, o organismo materno sofre uma série de alterações para retornar ao estado pré-gestacional (involução uterina, regressão das alterações hormonais, recuperação dos tecidos).", wrong: "❌ Incorreto! A afirmação é verdadeira: o puerpério inicia-se logo após a expulsão da placenta e tem a duração habitual de 6 a 8 semanas, durante as quais o organismo materno retorna progressivamente ao estado pré-gestacional." },
+  q64: { correct: "✅ Correto! Os cuidados imediatos à puérpera incluem: vigilância dos sinais vitais (PA, FC, temperatura), avaliação dos lóquios (quantidade, cor, odor), avaliação da involução uterina (altura e consistência do fundo uterino), cuidados à ferida perineal ou cirúrgica, suporte e incentivo ao aleitamento materno, e apoio emocional.", wrong: "❌ Incorreto! Atividade física intensa é contraindicada no pós-parto imediato. O repouso absoluto sem vigilância é perigoso. Os anticoagulantes não são prescritos a todas as puérperas de rotina. Os cuidados corretos envolvem vigilância ativa de sinais vitais, lóquios, ferida e apoio ao aleitamento." },
+  q65: { correct: "✅ Correto! A OMS recomenda aleitamento materno exclusivo até aos 6 meses e complementado (com outros alimentos) até aos 2 anos ou mais. O colostro, produzido nos primeiros dias, é rico em anticorpos (IgA secretória), fatores de crescimento e nutrientes essenciais – é o alimento ideal para o recém-nascido.", wrong: "❌ Incorreto! O colostro tem elevado valor nutritivo e imunológico, sendo fundamental para o recém-nascido. O aleitamento deve iniciar-se o mais cedo possível após o parto (1ª hora), não ser suspenso. A subida do leite ocorre habitualmente entre o 2º e o 4º dia." },
+  q66: { correct: "✅ Correto! Durante a amamentação, a sucção do bebé estimula a libertação de ocitocina pela hipófise, que provoca contrações uterinas, facilitando a involução uterina. Estas contrações podem causar dor transitória (\"dores do pós-parto\") especialmente nas multíparas.", wrong: "❌ Incorreto! A afirmação é verdadeira: a sucção do bebé durante a amamentação estimula a libertação de ocitocina, que provoca contrações uterinas e facilita a involução do útero ao estado pré-gestacional." },
+  // Módulo 3B – Lóquios
+  q67: { correct: "✅ Correto! A sequência correta dos lóquios é: 1º Rubros (vermelhos, 1-4 dias) → 2º Serosos (cor de rosa/acastanhados, 4-10 dias) → 3º Brancos/Albos (esbranquiçados/amarelados, do 10º dia até à 6ª semana). Esta progressão reflete a involução e cicatrização uterina.", wrong: "❌ Incorreto! A sequência correta é do mais vermelho para o mais claro: Rubros → Serosos → Brancos. Os lóquios rubros surgem logo após o parto; os brancos são os últimos a surgir." },
+  q68: { correct: "✅ Correto! São sinais de alerta dos lóquios: odor fétido ou desagradável (sugere infeção/endometrite), cor esverdeada ou purulenta, hemorragia abundante com coágulos volumosos (hemorragia pós-parto), e o reaparecimento de lóquios rubros após a sua diminuição. Todos requerem avaliação imediata.", wrong: "❌ Incorreto! Lóquios rubros nos primeiros dias, lóquios serosos entre o 4-10º dia, e a diminuição progressiva são características NORMAIS. Os sinais de alerta são: odor fétido, cor esverdeada/purulenta, hemorragia súbita abundante ou coágulos volumosos." },
+  q69: { correct: "✅ Correto! Os lóquios com odor fétido indicam sempre possível infeção e não devem ser ignorados — a afirmação é falsa, pelo que se respondeu corretamente.", wrong: "❌ Falso! Lóquios com odor fétido NÃO são normais e são um sinal de alerta de possível infeção uterina (endometrite). Os lóquios normais têm um odor semelhante ao sangue menstrual. Qualquer odor desagradável deve ser comunicado imediatamente à equipa de saúde." },
+  // Módulo 3B – Complicações Pós-Parto
+  q71: { correct: "✅ Correto! A hemorragia pós-parto (HPP) é a complicação mais temida do pós-parto imediato e a principal causa de mortalidade materna no mundo. Define-se como perda de sangue superior a 500 ml no parto vaginal ou 1000 ml na cesariana. Requer intervenção imediata e urgente.", wrong: "❌ Incorreto! O desconforto perineal ligeiro, a congestão mamária e o ligeiro aumento da micção são situações normais. A hemorragia pós-parto, definida por perda de sangue superior a 500 ml, é a complicação grave que pode ser fatal." },
+  q72: { correct: "✅ Correto! A endometrite pós-parto é a infeção mais frequente no puerpério. O quadro clínico típico inclui: febre (≥38°C após as primeiras 24h), dor e sensibilidade uterina à palpação, lóquios com odor fétido e/ou aspeto purulento, e mal-estar geral. Requer antibioterapia.", wrong: "❌ Incorreto! A afirmação é verdadeira: a endometrite pós-parto é de facto a infeção puerperal mais frequente, manifestando-se com febre, dor uterina e alteração dos lóquios, e requerendo tratamento antibiótico." },
+  q73: { correct: "✅ Correto! O baby blues é uma alteração emocional transitória e muito frequente (afeta 50-80% das puérperas), que surge nos primeiros dias pós-parto e resolve espontaneamente em 2-3 dias a 2 semanas. A depressão pós-parto é uma perturbação depressiva clinicamente significativa, mais persistente (>2 semanas), que afeta a funcionalidade da mãe e requer tratamento profissional.", wrong: "❌ Incorreto! O baby blues e a depressão pós-parto são condições distintas. O baby blues é transitório e muito frequente; a depressão pós-parto é mais grave e persistente. O baby blues resolve espontaneamente; a depressão requer intervenção profissional." },
+  q74: { correct: "✅ Correto! O período pós-parto tem risco aumentado de tromboembolismo venoso devido ao estado de hipercoagulabilidade (que persiste após o parto), imobilidade, trauma vascular do parto e desidratação. A mobilização precoce e a hidratação adequada são medidas preventivas fundamentais.", wrong: "❌ Incorreto! A afirmação é verdadeira: o pós-parto é um período de risco elevado para tromboembolismo venoso, devido à hipercoagulabilidade, imobilidade e trauma vascular, sendo a mobilização precoce e a hidratação medidas preventivas essenciais." },
+  q75: { correct: "✅ Correto! A mastite puerperal caracteriza-se por inflamação localizada de uma mama: rubor (vermelhidão), calor, tumefação (inchaço) e dor. Associa-se geralmente a febre, calafrios e mal-estar sistémico. É causada frequentemente por Staphylococcus aureus e requer tratamento com antibióticos.", wrong: "❌ Incorreto! A mastite é uma inflamação/infeção da mama com sinais inflamatórios locais (rubor, calor, dor, edema) e manifestações sistémicas (febre, mal-estar). Não se trata de mera congestão mamária nem de aumento simples de produção de leite." },
+  // Módulo 3B – TAS
+  q77: { correct: "✅ Correto! Prescrever medicamentos e decidir tratamentos são atos exclusivamente médicos. O TAS atua em funções de suporte sob supervisão, não podendo prescrever analgésicos nem indicar tratamentos de forma autónoma.", wrong: "❌ Incorreto! O TAS NÃO pode prescrever medicamentos nem indicar tratamentos – esses são atos médicos exclusivos. As restantes opções (higiene, registo de sinais, apoio emocional) são tarefas que se enquadram nas competências do TAS." },
+  q78: { correct: "✅ Correto! O TAS tem um papel fundamental na vigilância e comunicação de sinais de alerta à equipa de saúde, mas não tem autonomia para tomar decisões clínicas. Todas as alterações detetadas devem ser imediatamente comunicadas ao enfermeiro ou médico responsável.", wrong: "❌ Incorreto! A afirmação é verdadeira: o TAS deve vigiar e comunicar imediatamente qualquer sinal de alerta à equipa de saúde, não tendo autonomia para tomar decisões clínicas de forma independente." },
+  q79: { correct: "✅ Correto! As tarefas descritas (higiene e conforto, posicionamento para aleitamento, registo e comunicação de alterações, promoção de ambiente calmo) são exemplos concretos e adequados do âmbito de intervenção do TAS nos cuidados à puérpera, sempre sob supervisão da equipa de enfermagem/médica.", wrong: "❌ Incorreto! Realizar partos, interpretar análises de forma autónoma e realizar ecografias são competências exclusivas de médicos e enfermeiros especialistas. O TAS atua em funções de suporte e auxiliar, não de forma autónoma em atos clínicos." },
+};
+
+// Count only auto-graded questions
+const autoGradedQ = Object.keys(answers);
+let answered = {};
+let correct = 0;
+let wrong = 0;
+
+const STORAGE_KEY = 'ufcd6578_quiz_progress';
+
+// ── SAVE / RESTORE PROGRESS ──────────────────────────────────────────
+function saveProgress() {
+  const state = { answered, correct, wrong };
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+function restoreProgress() {
+  let saved;
+  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) {}
+  if (!saved || !saved.answered || Object.keys(saved.answered).length === 0) return;
+
+  answered = saved.answered;
+  correct  = saved.correct  || 0;
+  wrong    = saved.wrong    || 0;
+
+  // Re-apply UI state for each answered question
+  Object.entries(answered).forEach(([qId, result]) => {
+    const card = document.getElementById(qId);
+    if (!card) return;
+    const isCorrect = result === 'correct';
+
+    card.classList.add(isCorrect ? 'answered-correct' : 'answered-wrong');
+
+    const fbBox = document.getElementById(qId + '-fb');
+    if (!fbBox) return;
+    fbBox.style.display = 'block';
+
+    // TF buttons
+    const tfBtns = card.querySelectorAll('.tf-btn');
+    if (tfBtns.length > 0) {
+      tfBtns.forEach(b => {
+        b.disabled = true;
+        const val = b.onclick.toString().includes("'true'") ? 'true' : 'false';
+        if (isCorrect && val === answers[qId]) b.classList.add('selected-correct');
+        if (!isCorrect && val === answers[qId]) b.classList.add('show-correct');
+      });
+      // mark the chosen (wrong) button – we don't store which was clicked,
+      // so just style the non-correct one if wrong
+      if (!isCorrect) {
+        tfBtns.forEach(b => {
+          const val = b.onclick.toString().includes("'true'") ? 'true' : 'false';
+          if (val !== answers[qId]) b.classList.add('selected-wrong');
+        });
+      }
+    }
+
+    // MC buttons
+    const mcBtns = card.querySelectorAll('.mc-option');
+    if (mcBtns.length > 0) {
+      mcBtns.forEach(b => {
+        b.disabled = true;
+        if (b.dataset.opt === answers[qId]) {
+          b.classList.add(isCorrect ? 'selected-correct' : 'show-correct');
+        }
+      });
+    }
+
+    // Feedback text
+    fbBox.className = 'feedback-box ' + (isCorrect ? 'correct' : 'wrong');
+    if (isCorrect) {
+      fbBox.innerHTML = `<div class="feedback-title">🎉 Correto!</div><div class="feedback-text">${explanations[qId] ? explanations[qId].correct : ''}</div>`;
+    } else {
+      const msg = explanations[qId] ? (explanations[qId].wrong || explanations[qId].correct) : '';
+      fbBox.innerHTML = `<div class="feedback-title">❌ Incorreto!</div><div class="feedback-text">${msg}</div>`;
+    }
+  });
+
+  updateProgress();
+
+  // Scroll to first unanswered question after a short delay
+  setTimeout(() => {
+    const allCards = document.querySelectorAll('.question-card');
+    let firstUnanswered = null;
+    for (const card of allCards) {
+      if (!answered[card.id]) { firstUnanswered = card; break; }
+    }
+    if (firstUnanswered) {
+      firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 400);
+
+  showToast(`✅ Progresso restaurado! ${Object.keys(answered).length} questões já respondidas — a continuar onde ficaste!`);
+}
+
+function clearProgress() {
+  if (!confirm('Tens a certeza que queres apagar o progresso guardado e recomeçar do zero?')) return;
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+  restartQuiz();
+  showToast('🗑️ Progresso apagado. Podes começar de novo!');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+// ─────────────────────────────────────────────────────────────────────
+
+// Update total count display
+document.getElementById('totalQ').textContent = autoGradedQ.length;
+restoreProgress();
+
+function checkTF(btn, qId, chosen) {
+  if (answered[qId]) return;
+  const card = document.getElementById(qId);
+  const btns = card.querySelectorAll('.tf-btn');
+  btns.forEach(b => b.disabled = true);
+  const isCorrect = chosen === answers[qId];
+  const fbBox = document.getElementById(qId + '-fb');
+  fbBox.style.display = 'block';
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fbBox.className = 'feedback-box correct';
+    fbBox.innerHTML = `<div class="feedback-title">🎉 Correto!</div><div class="feedback-text">${explanations[qId].correct}</div>`;
+    card.classList.add('answered-correct');
+    correct++;
+    answered[qId] = 'correct';
+  } else {
+    btn.classList.add('selected-wrong');
+    fbBox.className = 'feedback-box wrong';
+    // show correct answer
+    btns.forEach(b => {
+      const val = b.onclick.toString().includes("'true'") ? 'true' : 'false';
+      if (val === answers[qId]) b.classList.add('show-correct');
+    });
+    const msg = explanations[qId].wrong || explanations[qId].correct;
+    fbBox.innerHTML = `<div class="feedback-title">❌ Incorreto!</div><div class="feedback-text">${msg}</div>`;
+    card.classList.add('answered-wrong');
+    wrong++;
+    answered[qId] = 'wrong';
+  }
+  saveProgress();
+  updateProgress();
+}
+
+function checkMC(btn, qId, chosen) {
+  if (answered[qId]) return;
+  const card = document.getElementById(qId);
+  const allBtns = card.querySelectorAll('.mc-option');
+  allBtns.forEach(b => b.disabled = true);
+  const isCorrect = chosen === answers[qId];
+  const fbBox = document.getElementById(qId + '-fb');
+  fbBox.style.display = 'block';
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    fbBox.className = 'feedback-box correct';
+    fbBox.innerHTML = `<div class="feedback-title">🎉 Correto!</div><div class="feedback-text">${explanations[qId].correct}</div>`;
+    card.classList.add('answered-correct');
+    correct++;
+    answered[qId] = 'correct';
+  } else {
+    btn.classList.add('selected-wrong');
+    // highlight correct
+    allBtns.forEach(b => {
+      if (b.dataset.opt === answers[qId]) b.classList.add('show-correct');
+    });
+    const msg = explanations[qId].wrong || explanations[qId].correct;
+    fbBox.className = 'feedback-box wrong';
+    fbBox.innerHTML = `<div class="feedback-title">❌ Incorreto!</div><div class="feedback-text">${msg}</div>`;
+    card.classList.add('answered-wrong');
+    wrong++;
+    answered[qId] = 'wrong';
+  }
+  saveProgress();
+  updateProgress();
+}
+
+function showModelAnswer(qId) {
+  const modelDiv = document.getElementById(qId + '-model');
+  if (modelDiv.style.display === 'block') {
+    modelDiv.style.display = 'none';
+  } else {
+    modelDiv.style.display = 'block';
+  }
+}
+
+function updateProgress() {
+  const total = autoGradedQ.length;
+  const answeredCount = Object.keys(answered).length;
+  const pct = Math.round((answeredCount / total) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressScore').innerHTML = `${answeredCount}/<span id="totalQ">${total}</span> respondidas`;
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+}
+
+function showFinalResults() {
+  const total = autoGradedQ.length;
+  const score = Math.round((correct / total) * 20 * 10) / 10;
+  const pct = Math.round((correct / total) * 100);
+
+  document.getElementById('res-correct').textContent = correct;
+  document.getElementById('res-wrong').textContent = wrong;
+  document.getElementById('res-total').textContent = total;
+  document.getElementById('res-pct').textContent = pct + '%';
+  document.getElementById('results-grade').textContent = score.toFixed(1);
+  document.getElementById('results-subtitle').textContent = 'valores (escala 0-20)';
+
+  let trophy = '🏆', message = '';
+  if (score >= 18) {
+    trophy = '🌟'; message = 'Excelente! Dominas muito bem os conteúdos da UFCD 6578. Estás mais do que preparado/a para o teste!';
+  } else if (score >= 14) {
+    trophy = '🎉'; message = 'Muito bom! Tens uma boa compreensão dos temas. Revê as questões que erraste e estarás em ótima forma para o teste!';
+  } else if (score >= 10) {
+    trophy = '📚'; message = 'Suficiente, mas podes melhorar! Revê com atenção os módulos onde erraste mais questões. Mais um estudo focado e consegues!';
+  } else {
+    trophy = '💪'; message = 'Ainda há trabalho a fazer, mas não desanimes! Revê o manual, especialmente os temas de desenvolvimento embrionário e vigilância da gravidez, e tenta novamente!';
+  }
+
+  document.getElementById('results-trophy').textContent = trophy;
+  document.getElementById('result-message').textContent = message;
+
+  const section = document.getElementById('results-section');
+  section.style.display = 'block';
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function restartQuiz() {
+  answered = {};
+  correct = 0;
+  wrong = 0;
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+  updateProgress();
+
+  // Reset all question cards
+  document.querySelectorAll('.question-card').forEach(card => {
+    card.className = 'question-card';
+    card.querySelectorAll('.tf-btn').forEach(b => {
+      b.disabled = false;
+      b.className = 'tf-btn';
+    });
+    card.querySelectorAll('.mc-option').forEach(b => {
+      b.disabled = false;
+      b.className = 'mc-option';
+    });
+    card.querySelectorAll('.feedback-box').forEach(fb => {
+      fb.style.display = 'none';
+      fb.className = 'feedback-box';
+    });
+    card.querySelectorAll('.model-answer').forEach(m => m.style.display = 'none');
+    card.querySelectorAll('.dev-textarea').forEach(t => t.value = '');
+  });
+
+  document.getElementById('results-section').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Back to top visibility
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('back-to-top');
+  if (window.scrollY > 400) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+</script>
+	
+<script>
+function corrigirQ49(){
+  const respostasCorretas = {
+    1: "bexiga",
+    2: "ureter",
+    3: "reto",
+    4: "vesícula seminal",
+    5: "próstata",
+    6: "canal deferente",
+    7: "pénis",
+    8: "testículo",
+    9: "escroto",
+    10: "corpos cavernosos",
+    11: "uretra",
+    12: "epidídimo",
+    13: "ânus"
+  };
+
+  let certas = 0;
+
+  const normalize = txt =>
+    txt.toLowerCase()
+       .normalize("NFD")
+       .replace(/[\u0300-\u036f]/g, "")
+       .trim();
+
+  for(let i=1;i<=13;i++){
+    const input = document.getElementById("q49_" + i);
+    const resposta = normalize(input.value);
+    const correta = normalize(respostasCorretas[i]);
+
+    const parent = input.parentElement;
+
+    const antiga = parent.querySelector(".hint-q49");
+    if(antiga) antiga.remove();
+
+    if(resposta === correta){
+      input.style.border = "2px solid #22c55e";
+      input.style.background = "#dcfce7";
+      certas++;
+    }else{
+      input.style.border = "2px solid #ef4444";
+      input.style.background = "#fee2e2";
+
+      const hint = document.createElement("div");
+      hint.className = "hint-q49";
+      hint.style.marginTop = "4px";
+      hint.style.fontSize = "0.82rem";
+      hint.style.color = "#16a34a";
+      hint.style.fontWeight = "700";
+      hint.innerHTML = "✔ Correta: " + respostasCorretas[i];
+
+      parent.appendChild(hint);
+    }
+  }
+
+  const resultado = document.getElementById("resultado-q49");
+
+  if(certas === 13){
+    resultado.innerHTML = "🎉 Excelente! Acertaste as 13 estruturas!";
+    resultado.style.color = "#16a34a";
+  } else {
+    resultado.innerHTML = `Acertaste ${certas} de 13 respostas.`;
+    resultado.style.color = "#1a1a2e";
+  }
+}
+	
+</script>
+	
+<script>
+function corrigirQ62(){
+  const correta = ["B","D","C","A","E"];
+  let certas = 0;
+
+  for(let i=1;i<=5;i++){
+    const input = document.getElementById("q62_"+i);
+    const valor = input.value.trim().toUpperCase();
+
+    if(valor === correta[i-1]){
+      input.style.border = "2px solid #22c55e";
+      input.style.background = "#dcfce7";
+      certas++;
+    }else{
+      input.style.border = "2px solid #ef4444";
+      input.style.background = "#fee2e2";
+    }
+  }
+
+  const resultado = document.getElementById("resultado-q62");
+
+  if(certas === 5){
+    resultado.innerHTML = "🎉 Excelente! Sequência totalmente correta.";
+    resultado.style.color = "#16a34a";
+  }else{
+    resultado.innerHTML = `Acertaste ${certas} de 5 posições.<br>
+    ✅ Correta: <strong>B → D → C → A → E</strong>`;
+    resultado.style.color = "#1a1a2e";
+  }
+}
+</script>
+	
+</body>
+</html>
