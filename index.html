@@ -3152,7 +3152,8 @@ function corrigirQ49(){
 
     const parent = input.parentElement;
 
-    const antiga = parent.querySelector(".hint-q49");
+    // Remove hint anterior se existir
+    const antiga = parent.parentElement.querySelector(".hint-q49-" + i);
     if(antiga) antiga.remove();
 
     if(resposta === correta){
@@ -3164,14 +3165,15 @@ function corrigirQ49(){
       input.style.background = "#fee2e2";
 
       const hint = document.createElement("div");
-      hint.className = "hint-q49";
-      hint.style.marginTop = "4px";
+      hint.className = "hint-q49-" + i;
+      hint.style.marginTop = "2px";
+      hint.style.marginBottom = "6px";
       hint.style.fontSize = "0.82rem";
       hint.style.color = "#16a34a";
       hint.style.fontWeight = "700";
       hint.innerHTML = "✔ Correta: " + respostasCorretas[i];
 
-      parent.appendChild(hint);
+      parent.insertAdjacentElement("afterend", hint);
     }
   }
 
