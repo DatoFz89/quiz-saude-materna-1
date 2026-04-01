@@ -1062,6 +1062,27 @@ function corrigirQ7(){
   </div>
 </div>
 
+<!-- Q9B MC - Ciclo menstrual -->
+<div class="question-card" id="q9b">
+  <div class="question-header">
+    <div class="q-number">★</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Qual das seguintes afirmações sobre o ciclo uterino/menstrual é CORRETA?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q9b','a')" data-opt="a"><span class="opt-letter">A</span>O endométrio mantém-se sempre igual ao longo do ciclo, independentemente das fases ováricas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q9b','b')" data-opt="b"><span class="opt-letter">B</span>O endométrio prolifera na fase folicular, atinge o estado secretor após a ovulação (fase lútea) e descama na menstruação se não houver fecundação.</button>
+      <button class="mc-option" onclick="checkMC(this,'q9b','c')" data-opt="c"><span class="opt-letter">C</span>A menstruação ocorre logo após a ovulação, na fase lútea.</button>
+      <button class="mc-option" onclick="checkMC(this,'q9b','d')" data-opt="d"><span class="opt-letter">D</span>O endométrio secretor surge na fase folicular, antes da ovulação.</button>
+    </div>
+    <div class="feedback-box" id="q9b-fb"></div>
+  </div>
+</div>
+
+	
 <!-- Q10 MC -->
 <div class="question-card" id="q10">
   <div class="question-header">
@@ -1690,6 +1711,27 @@ function corrigirQ7(){
   </div>
 </div>
 
+<!-- Q37B MC - Alterações corporais abdómen e extremidades -->
+<div class="question-card" id="q37b">
+  <div class="question-header">
+    <div class="q-number">★</div>
+    <div>
+      <div class="q-type-badge">🔘 Escolha Múltipla</div>
+      <div class="question-text">Quais das seguintes alterações corporais durante a gravidez estão associadas ao abdómen e às extremidades, respetivamente?</div>
+    </div>
+  </div>
+  <div class="question-body">
+    <div class="mc-options">
+      <button class="mc-option" onclick="checkMC(this,'q37b','a')" data-opt="a"><span class="opt-letter">A</span>Abdómen: leucorreia e polaquiúria; Extremidades: acentuação da curvatura lombar.</button>
+      <button class="mc-option" onclick="checkMC(this,'q37b','b')" data-opt="b"><span class="opt-letter">B</span>Abdómen: estrias da gravidez e linha negra; Extremidades: eritema palmar e varizes/edemas por pressão sobre a circulação venosa das pernas.</button>
+      <button class="mc-option" onclick="checkMC(this,'q37b','c')" data-opt="c"><span class="opt-letter">C</span>Abdómen: eritema palmar; Extremidades: estrias e linha negra.</button>
+      <button class="mc-option" onclick="checkMC(this,'q37b','d')" data-opt="d"><span class="opt-letter">D</span>Abdómen: dorsalgias; Extremidades: leucorreia e infeções urinárias.</button>
+    </div>
+    <div class="feedback-box" id="q37b-fb"></div>
+  </div>
+</div>
+
+	
 <!-- Q38 TF -->
 <div class="question-card" id="q38">
   <div class="question-header">
@@ -2752,11 +2794,11 @@ const answers = {
   q63: 'true', q66: 'true', q69: 'false', q72: 'true',
   q74: 'true', q78: 'true',
   // MC questions: correct option letter
-  q5: 'b', q6: 'b', q7: 'b', q9: 'b', q10: 'c',
+  q5: 'b', q6: 'b', q7: 'b', q9: 'b', q9b: 'b', q10: 'c',
   q12: 'b', q13: 'b', q15: 'c', q18: 'd',
   q20: 'c', q21: 'b', q23: 'a', q24: 'b', q26: 'b',
   q28: 'b', q29: 'b', q34: 'b', q35: 'b',
-  q37: 'b', q39: 'b', q40: 'c', q43: 'b', q45: 'c',
+  q37: 'b', q37b: 'b', q39: 'b', q40: 'c', q43: 'b', q45: 'c',
   q46: 'c', q48: 'b',
   // New MC – Módulo 3B
   q50: 'b', q52: 'b', q53: 'c', q55: 'b',
@@ -2765,7 +2807,6 @@ const answers = {
   q65: 'b', q67: 'b', q68: 'b', q71: 'b', q73: 'b',
   q75: 'b', q77: 'b', q79: 'b',
 };
-
 const explanations = {
   q1: { correct: "✅ Correto! A hereditariedade é exatamente esse processo – a transmissão de características genéticas de geração em geração, incluindo traços físicos como a cor dos olhos e predisposições a certas doenças.", wrong: "❌ Incorreto! A afirmação é verdadeira: a hereditariedade é precisamente o processo pelo qual as características genéticas são transmitidas de geração em geração através dos genes, incluindo traços físicos e predisposições a doenças." },
   q2: { correct: "✅ Correto! A reprodução sexuada humana resulta da fecundação (união do óvulo com o espermatozoide), dando origem a um novo ser com características dos dois progenitores.", wrong: "❌ Incorreto! A afirmação é verdadeira: na reprodução sexuada, a fecundação do óvulo (produzido pela fêmea) pelo espermatozoide (produzido pelo macho) origina um novo ser semelhante a ambos os progenitores." },
@@ -2776,6 +2817,7 @@ const explanations = {
   q7: { correct: "✅ Correto! As Trompas de Falópio (também chamadas tubas uterinas) são canais tubulares que ligam os ovários ao útero e são o local habitual onde ocorre a fecundação do óvulo pelo espermatozoide.", wrong: "❌ Incorreto! As Trompas de Falópio ligam os ovários ao útero e é nelas que ocorre normalmente a fecundação." },
   q8: { correct: "✅ Correto! Durante o período fértil da mulher, os ovários libertam um ovócito II a cada ±28 dias. Este ovócito só completa o processo de oogénese (formando o óvulo) se for fecundado.", wrong: "❌ Incorreto! A afirmação é verdadeira: os ovários libertam um ovócito II a cada ±28 dias, e esse ovócito só termina a oogénese (completando a sua maturação) se for fecundado por um espermatozoide." },
   q9: { correct: "✅ Correto! O ciclo ovárico segue a sequência: 1ª Fase Folicular (crescimento folicular), 2ª Fase Ovulatória (libertação do óvulo, ±dia 14) e 3ª Fase Lútea (formação do corpo amarelo).", wrong: "❌ Incorreto! A sequência correta é: Fase Folicular → Fase Ovulatória → Fase Lútea. A ovulação ocorre aproximadamente a meio do ciclo (±dia 14)." },
+  q9b: { correct: "✅ Correto! O ciclo uterino acompanha o ciclo ovárico: na fase folicular o endométrio prolifera (espessa); após a ovulação, na fase lútea, torna-se secretor (preparando-se para receber um embrião); se não houver fecundação, o endométrio descama — é a menstruação.", wrong: "❌ Incorreto! O endométrio passa por três fases em sincronia com o ciclo ovárico: proliferação (fase folicular) → secreção (fase lútea) → descamação (menstruação), caso não haja fecundação." },
   q10: { correct: "✅ Correto! A fecundação ocorre normalmente nas Trompas de Falópio, onde o espermatozoide encontra o óvulo após a ovulação.", wrong: "❌ Incorreto! A fecundação ocorre nas Trompas de Falópio (tubas uterinas), não no útero nem na vagina." },
   q11: { correct: "✅ Correto! Após a penetração de um espermatozoide, ocorre imediatamente um bloqueio que impede a poliespermia. Com a fusão dos núcleos forma-se o ovo/zigoto, primeira célula do novo ser.", wrong: "❌ Incorreto! A afirmação é verdadeira: após a penetração do espermatozoide, ocorre um bloqueio imediato que impede a entrada de outros espermatozoides (bloqueio da poliespermia), e a fusão dos dois núcleos origina o zigoto." },
   q12: { correct: "✅ Correto! Na segunda fase (que corresponde ao primeiro trimestre, quando todos os órgãos se formam), o produto da fertilização é designado EMBRIÃO. Na 1ª fase é ovo/zigoto e na 3ª fase (fase fetal) é feto.", wrong: "❌ Incorreto! Na segunda fase, o produto da fertilização designa-se EMBRIÃO. É nesta fase que todos os órgãos se começam a formar." },
@@ -2802,6 +2844,7 @@ const explanations = {
   q35: { correct: "✅ Correto! Para uma grávida com IMC normoponderal (18,5-24,9 kg/m²), o ganho de peso recomendado é de 11,5 a 16 kg, com um aumento semanal de aproximadamente 0,4 kg no 2º e 3º trimestres.", wrong: "❌ Incorreto! Para IMC normoponderal (18,5-24,9), o ganho recomendado é de 11,5 a 16 kg. 12,5-18 kg é para baixo peso; 7-11,5 kg para excesso de peso; 5-9 kg para obesidade." },
   q36: { correct: "✅ Correto! São alterações fisiológicas normais da gravidez ao nível da pélvis: o aumento do fluxo vaginal (leucorreia), o aumento do risco de infeções urinárias e a diminuição do tónus vesical com aumento da urgência urinária/polaquiúria.", wrong: "❌ Incorreto! A afirmação é verdadeira: o aumento do fluxo vaginal (leucorreia) e o maior risco de infeções urinárias são alterações fisiológicas normais da gravidez, resultantes das modificações hormonais e circulatórias ao nível da pélvis." },
   q37: { correct: "✅ Correto! A acentuação da curvatura lombar durante a gravidez causa dorsalgias (dores nas costas), sendo uma das alterações corporais mais comuns associadas ao dorso, resultado do deslocamento do centro de gravidade.", wrong: "❌ Incorreto! A alteração do dorso é a acentuação da curvatura lombar (hiperlordose), que causa dorsalgias. As restantes opções correspondem a alterações das extremidades e da pélvis." },
+  q37b: { correct: "✅ Correto! No abdómen surgem as estrias da gravidez (preocupação estética) e a linha negra (pigmentação da linha média abdominal). Nas extremidades, o eritema palmar (mãos com prurido) e a pressão sobre a circulação venosa das pernas causam varizes e edemas.", wrong: "❌ Incorreto! As alterações do abdómen são as estrias e a linha negra; nas extremidades surgem o eritema palmar e varizes/edemas das pernas. A leucorreia e polaquiúria são da pélvis; as dorsalgias são do dorso." },
   q38: { correct: "✅ Correto! A idade gestacional definitiva é estabelecida pelo CCC (comprimento crânio-caudal) na ecografia das 11-13 semanas + 6 dias. Uma vez definida desta forma, não se altera ao longo de toda a gravidez.", wrong: "❌ Incorreto! A afirmação é verdadeira: a idade gestacional definitiva é definida pelo comprimento crânio-caudal na ecografia das 11-13 semanas + 6 dias, e mantém-se inalterável ao longo de toda a gravidez." },
   q39: { correct: "✅ Correto! O rastreio combinado (translucência da nuca + bioquímica sérica) é o mais recomendado. Se a grávida chegar após as 14 semanas, opta-se pelo rastreio bioquímico do 2º trimestre (teste quádruplo). O rastreio deve ser oferecido a todas as grávidas.", wrong: "❌ Incorreto! O rastreio de síndrome de Down deve ser oferecido a TODAS as grávidas. O rastreio combinado é o preferencial; após as 14 semanas usa-se o teste quádruplo do 2º trimestre." },
   q40: { correct: "✅ Correto! Recomendações de destinos de viagem para o pós-parto não fazem parte da informação pré-natal recomendada. Os temas incluídos são: fisiologia da gravidez, alimentação, estilos de vida, prevenção de infeções, amamentação, parto e cuidados ao recém-nascido.", wrong: "❌ Incorreto! Recomendações de viagens NÃO fazem parte da informação pré-natal padronizada. Os temas corretos incluem estilos de vida, alimentação, amamentação, prevenção de toxoplasmose e cuidados ao recém-nascido." },
